@@ -1,0 +1,12 @@
+/* Ensure the table wrapper shows a scrollbar only below the table */
+div[style*="overflowX"] {
+    display: block;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  /* Hide the bottom page scrollbar */
+  html, body {
+    overflow-x: hidden;
+  }
+  

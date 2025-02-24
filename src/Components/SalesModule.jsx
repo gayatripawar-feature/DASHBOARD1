@@ -59,42 +59,125 @@ const SalesModule = () => {
 
       {/* FORM */}
       {showForm ? (
+        // <div className="card p-4 ">
+        //   <h4 className="mb-3">Add New Sales Person</h4>
+        //   <form onSubmit={handleSubmit}>
+        //     <div className="mb-3">
+        //       <label className="form-label">Name</label>
+        //       <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
+        //     </div>
+        //     <div className="mb-3">
+        //       <label className="form-label">Email</label>
+        //       <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
+        //     </div>
+        //     <div className="mb-3">
+        //       <label className="form-label">Mobile</label>
+        //       <input type="text" className="form-control" name="mobile" value={formData.mobile} onChange={handleChange} required />
+        //     </div>
+        //     <div className="mb-3 ">
+        //       <label className="form-label">Designation</label>
+        //       <input type="text" className="form-control" name="designation" value={formData.designation} onChange={handleChange} required />
+        //     </div>
+        //     <div className="mb-3">
+        //       <label className="form-label">Joining Date</label>
+        //       <input type="date" className="form-control" name="joiningDate" value={formData.joiningDate} onChange={handleChange} required />
+        //     </div>
+        //     <div className="mb-3">
+        //       <label className="form-label">Status</label>
+        //       <select className="form-control" name="status" value={formData.status} onChange={handleChange}>
+        //         <option value="Active">Active</option>
+        //         <option value="Inactive">Inactive</option>
+        //       </select>
+        //     </div>
+        //     <div className="d-flex gap-2">
+        //       <button type="submit" className="btn btn-success">Submit</button>
+        //       <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+        //     </div>
+        //   </form>
+        // </div>
         <div className="card p-4">
-          <h4 className="mb-3">Add New Sales Person</h4>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Name</label>
-              <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Email</label>
-              <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Mobile</label>
-              <input type="text" className="form-control" name="mobile" value={formData.mobile} onChange={handleChange} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Designation</label>
-              <input type="text" className="form-control" name="designation" value={formData.designation} onChange={handleChange} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Joining Date</label>
-              <input type="date" className="form-control" name="joiningDate" value={formData.joiningDate} onChange={handleChange} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Status</label>
-              <select className="form-control" name="status" value={formData.status} onChange={handleChange}>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-              </select>
-            </div>
-            <div className="d-flex gap-2">
-              <button type="submit" className="btn btn-success">Submit</button>
-              <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
-            </div>
-          </form>
-        </div>
+  <h4 className="mb-3">Add New Sales Person</h4>
+  <form onSubmit={handleSubmit}>
+    <div className="row mb-3">
+      <div className="col-md-4">
+        <label className="form-label">Name</label>
+        <input
+          type="text"
+          className="form-control"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="col-md-4">
+        <label className="form-label">Email</label>
+        <input
+          type="email"
+          className="form-control"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="col-md-4">
+        <label className="form-label">Mobile</label>
+        <input
+          type="text"
+          className="form-control"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+      </div>
+    </div>
+
+    <div className="row mb-3">
+      <div className="col-md-4">
+        <label className="form-label">Designation</label>
+        <input
+          type="text"
+          className="form-control"
+          name="designation"
+          value={formData.designation}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="col-md-4">
+        <label className="form-label">Joining Date</label>
+        <input
+          type="date"
+          className="form-control"
+          name="joiningDate"
+          value={formData.joiningDate}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="col-md-4">
+        <label className="form-label">Status</label>
+        <select
+          className="form-control"
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+        >
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
+
+    <div className="d-flex gap-2">
+      <button type="submit" className="btn btn-success">Submit</button>
+      <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+    </div>
+  </form>
+</div>
+
       ) : (
         // TABLE
         <div className="table-responsive">

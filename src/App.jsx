@@ -7,7 +7,7 @@ import Dashboard from './Components/Dashboard'; // Import the Dashboard componen
 import SalesModule from './Components/SalesModule';
 import ShareSpace from './Components/ShareSpace';
 import LostVisitsModule from './Components/LostVisitsModule';
-// import CRMModule from './CRMModule'; 
+import CRM from "./Components/CRM";
 import Registration from "./Components/Registration";
 
 const App = () => {
@@ -26,6 +26,7 @@ const App = () => {
           <Route path="developer" element={<DeveloperModule />} />
           <Route path="sales" element={<SalesModule />} />
           <Route path="crm" element={<CRMModule />} />  */}
+           <Route path="crm/CRM" element={<CRM/>} /> 
           <Route path="crm/registration" element={<Registration />} /> 
         </Route>
       </Routes>

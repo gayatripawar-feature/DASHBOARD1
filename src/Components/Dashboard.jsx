@@ -212,8 +212,8 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      <div className="d-flex flex-grow-1">
-        {/* Sidebar */}
+      {/* <div className="d-flex flex-grow-1">
+        
         <div
           className="bg-primary text-white p-3 d-flex flex-column"
           style={{ width: collapsed ? '80px' : '250px', transition: 'width 0.3s' }}
@@ -266,7 +266,7 @@ const Dashboard = () => {
             />
           </ul>
 
-          {/* Logout Option */}
+          
           <div className="mt-auto">
             <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center" onClick={handleLogout}>
               <FaSignOutAlt className="me-2" />
@@ -275,12 +275,90 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Main Content */}
+     
         <div className="flex-grow-1 p-4">
-          <Outlet /> {/* Render the child routes */}
+          <Outlet /> 
         </div>
-      </div>
+      </div> */}
+       {/* </div> */}
+
+       <div className="d-flex">
+  {/* Sidebar */}
+  <div
+    className="bg-primary text-white p-3 d-flex flex-column"
+    style={{
+      width: collapsed ? '80px' : '250px',  // Sidebar width changes based on 'collapsed' state
+      height: '100vh',  // Full height
+      transition: 'width 0.3s',  // Smooth transition for expanding/collapsing the sidebar
+      flexShrink: 0,  // Prevent sidebar from shrinking
+    }}
+  >
+    <ul className="nav flex-column">
+      <SidebarItem to="/" icon={<FaTachometerAlt />} label="Dashboard" collapsed={collapsed} />
+
+      <SidebarDropdown
+        label="Admin Section"
+        icon={<FaUserShield />}
+        collapsed={collapsed}
+        isOpen={sections.admin}
+        toggleOpen={() => toggleSection('admin')}
+        subItems={[{ to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" }]}
+      />
+
+      <SidebarDropdown
+        label="Developer Module"
+        icon={<FaCode />}
+        collapsed={collapsed}
+        isOpen={sections.developer}
+        toggleOpen={() => toggleSection('developer')}
+        subItems={[{ to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" }]}
+      />
+
+      <SidebarDropdown
+        label="Sales Module"
+        icon={<FaChartLine />}
+        collapsed={collapsed}
+        isOpen={sections.sales}
+        toggleOpen={() => toggleSection('sales')}
+        subItems={[{ to: "/sales/lostvisits", icon: <FaChartLine />, label: "Lost Visits" }]}
+      />
+
+      <SidebarDropdown
+        label="CRM Module"
+        icon={<FaCogs />}
+        collapsed={collapsed}
+        isOpen={sections.crm}
+        toggleOpen={() => toggleSection('crm')}
+        subItems={[
+          { to: "/crm/sharespace", icon: <FaUser />, label: "Sharespacecrm" },
+          { to: "/crm/registration", icon: <FaUser />, label: "Registration" },
+        { to: "/crm/crm", icon: <FaUser />, label: "CRM" }
+      ]}
+      />
+   
+    </ul>
+
+    {/* Logout Option */}
+    <div className="mt-auto">
+      <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center" onClick={handleLogout}>
+        <FaSignOutAlt className="me-2" />
+        {!collapsed && 'SignOut'}
+      </button>
     </div>
+  </div>
+
+  {/* Main Content */}
+  <div
+    className="flex-grow-1 p-4"
+    style={{
+      paddingLeft: collapsed ? '80px' : '250px',  // Make sure content adjusts based on sidebar width
+      transition: 'padding-left 0.3s',  // Smooth transition for content
+    }}
+  >
+    <Outlet /> {/* Render the child routes */}
+  </div>
+</div>
+</div>
   );
 };
 

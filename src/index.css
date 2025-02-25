@@ -10,3 +10,35 @@ div[style*="overflowX"] {
     overflow-x: hidden;
   }
   
+
+  .sidebar {
+    flex: 0 0 250px; /* No grow, no shrink, fixed width */
+  }
+  
+  /* Custom scrollbar width */
+.table-responsive::-webkit-scrollbar {
+  width: 16px;  /* Increase the width of the scrollbar */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888;  /* Change the thumb color */
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: #555;  /* Hover effect */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width */
+  position: fixed; /* Stay fixed */
+  height: 100vh; /* Full height */
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa;
+}
+.content {
+  margin-left: 250px; /* Offset content by sidebar width */
+  padding: 20px;
+  overflow-x: hidden;
+}

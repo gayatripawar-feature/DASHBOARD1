@@ -26,62 +26,60 @@ import {
 } from "@mui/material";
 
 const columns = [
-  { Header: "Flat No", accessor: "flatNo" },
-  { Header: "Name of Allotee", accessor: "nameAllotee" },
-  { Header: "Name of Co-Allotee", accessor: "nameCoAllotee" },
-  { Header: "Type", accessor: "type" },
-  { Header: "Floor", accessor: "floor" },
-  { Header: "Email ID", accessor: "emailId" },
-  { Header: "Whatsapp Mobile No.", accessor: "whatsapp" },
-  { Header: "Rate", accessor: "rate" },
-  { Header: "Agreement Value", accessor: "agreementValue" },
-  { Header: "Date of Booking", accessor: "dateBooking" },
-  { Header: "Parking", accessor: "parking" },
-  { Header: "Registration Number", accessor: "regNumber" },
-  { Header: "Checklist of Document Collection", accessor: "docCollection" },
-  { Header: "Upload Index 2", accessor: "uploadIndex2" },
-  { Header: "Document Handover", accessor: "docHandover" },
+  { Header: "FlAT NO", accessor: "FlAT NO" },
+  { Header: "NAME OF ALLOTEE", accessor: "NAME OF ALLOTEE" },
+  { Header: "NAME OF CO-ALLOTEE", accessor: "NAME OF CO-ALLOTEE" },
+  { Header: "TYPE", accessor: "TYPE" },
+  { Header: "FlOOR", accessor: "FlOOR" },
+  { Header: "EMAIL ID", accessor: "EMAILID" },
+  { Header: "WHATSAPP MOBILE NO", accessor: "WHATSAPP" },
+  { Header: "RATE", accessor: "RATE" },
+  { Header: "AGREEMENT VALUE", accessor: "AGREEMENT VALUE" },
+  { Header: "DATE OF BOOKING", accessor: "DATE OF BOOKING" },
+  { Header: "PARKING", accessor: "PARKING" },
+  { Header: "HOME LOAN APPlicability", accessor: "HOME LOAN APPlicability" },
+  { Header: "BANK NAME", accessor: "BANK NAME" },
+  { Header: "BANKER NAME", accessor: "BANKER NAME" },
+  { Header: "MOBILE NO.", accessor: "MOBILE NO." },
+  { Header: "LOAN ACCOUNT NO.", accessor: "LOAN ACCOUNT NO." },
+  { Header: "Loan Amount", accessor: "Loan Amount" },
+  { Header: "SANCTION LETTER", accessor: "SANCTION LETTER" },
+  { Header: "HOME LOAN SANCTION CERTIFICATE COLLECTED", accessor: "HOME LOAN SANCTION CERTIFICATE COLLECTED" },
+  { Header: "BOOKING CONFIRMATION", accessor: "BOOKING CONFIRMATION" },
+  { Header: "BOOKING CANCELATION REASON", accessor: "BOOKING CANCELATION REASON" },
+  { Header: "BOOKING CONFIRMATION MAIL SENT.", accessor: "BOOKING CONFIRMATION MAIL SENT" },
 ];
 
 const data = [
-  {
-    flatNo: "101",
-    nameAllotee: "John Doe",
-    nameCoAllotee: "Jane Doe",
-    type: "2BHK",
-    floor: "1",
-    emailId: "john@example.com",
-    whatsapp: "1234567890",
-    rate: "₹50,000",
-    agreementValue: "₹5,00,000",
-    dateBooking: "2024-02-20",
-    parking: "Yes",
-    regNumber: "AB12345",
-    docCollection: "Completed",
-    uploadIndex2: "Uploaded",
-    docHandover: "Yes",
+    {
+    "FlAT NO": "A-101",
+    "NAME OF ALLOTEE": "John Doe",
+    "NAME OF CO-ALLOTEE": "Jane Doe",
+    "TYPE": "2BHK",
+    "FlOOR": "1st",
+    "EMAILID": "johndoe@example.com",
+    "WHATSAPP": "9876543210",
+    "RATE": "5000",
+    "AGREEMENT VALUE": "50,00,000",
+    "DATE OF BOOKING": "2024-01-15",
+    "PARKING": "Yes",
+    "HOME LOAN APPlicability": "Yes",
+    "BANK NAME": "HDFC Bank",
+    "BANKER NAME": "Mr. Sharma",
+    "MOBILE NO.": "9876543210",
+    "LOAN ACCOUNT NO.": "HDFC123456789",
+    "Loan Amount": "40,00,000",
+    "SANCTION LETTER": "Received",
+    "HOME LOAN SANCTION CERTIFICATE COLLECTED": "Yes",
+    "BOOKING CONFIRMATION": "Confirmed",
+    "BOOKING CANCELATION REASON": "N/A",
+    "BOOKING CONFIRMATION MAIL SENT": "Yes"
   },
-  {
-    flatNo: "101",
-    nameAllotee: "John Doe",
-    nameCoAllotee: "Jane Doe",
-    type: "2BHK",
-    floor: "1",
-    emailId: "john@example.com",
-    whatsapp: "1234567890",
-    rate: "₹50,000",
-    agreementValue: "₹5,00,000",
-    dateBooking: "2024-02-20",
-    parking: "Yes",
-    regNumber: "AB12345",
-    docCollection: "Completed",
-    uploadIndex2: "Uploaded",
-    docHandover: "Yes",
-  },
+      
  
 ];
 
-const Registration = () => {
+const HomeLoan = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [filterType, setFilterType] = useState("");
   const [filterValue, setFilterValue] = useState("");
@@ -140,7 +138,7 @@ const Registration = () => {
 
   return (
     <div className="container mt-3 ">
-      <h3 className="fs-6 pb-3">Sales Module / Registration Management</h3>
+      <h3 className="fs-6 pb-3 ">Sales Module / Home Loan Management</h3>
 
       <div className="d-flex align-items-center mb-2">
         <Button className="mb-5"
@@ -150,11 +148,11 @@ const Registration = () => {
           style={{ borderRadius: "20px" }}
           startIcon={<FaEye size={20} color="#28a745" />}
         >
-          {!isCollapsed && <span className="text-success ">Registration</span>}
+          {!isCollapsed && <span className="text-success ">Home Loan</span>}
         </Button>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }} >
         {/* Start Date */}
         <label>Start Date:</label>
         <TextField
@@ -162,7 +160,8 @@ const Registration = () => {
           variant="outlined"
           size="small"
           value={startDate}
-            placeholder="Select Date"
+            placeholder="Select Date"  
+            className="bg-white"
           onChange={(e) => setStartDate(e.target.value)}
           style={{ width: "150px" }}
         />
@@ -174,6 +173,7 @@ const Registration = () => {
           variant="outlined"
           size="small"
           value={endDate}
+          className="bg-white"
           placeholder="Select Date"
           onChange={(e) => setEndDate(e.target.value)}
           style={{ width: "150px" }}
@@ -187,6 +187,7 @@ const Registration = () => {
           size="small"
           style={{ width: "150px" }}
           value={filterType}
+          className="bg-white"
           onChange={(e) => {
             setFilterType(e.target.value);
             setFilterValue(""); 
@@ -207,6 +208,7 @@ const Registration = () => {
               select
               variant="outlined"
               size="small"
+              className="bg-white"
               style={{ width: "150px" }}
               value={filterValue}
               onChange={(e) => setFilterValue(e.target.value)}
@@ -243,12 +245,17 @@ const Registration = () => {
         }}
       >
         <Table style={{ tableLayout: "auto", width: "100%" }}>
-          <TableHead>
+          <TableHead className="">
             <TableRow>
               {columns
                 .filter((column) => column.Header !== "Actions")
                 .map((column) => (
-                  <TableCell key={column.Header} align="center">
+                  <TableCell key={column.Header} align="center" className="fw-bold fs-6"
+                //   sx={{
+                //     border: "1px solid rgba(224, 224, 224, 1)", // Light grey border
+                //     padding: "8px", // Adjust padding if needed
+                //   }}
+                  >
                     {column.Header}
                   </TableCell>
                 ))}
@@ -282,11 +289,14 @@ const Registration = () => {
                 </TableRow>
               ))}
           </TableBody>
+
+
+
         </Table>
       </TableContainer>
 
      
-    
+   
         <div className="d-flex align-items-center justify-content-start gap-3">
   <Button
     variant="outlined"
@@ -324,6 +334,6 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default HomeLoan;
 
 

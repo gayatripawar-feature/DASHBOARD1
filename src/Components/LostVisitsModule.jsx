@@ -167,10 +167,10 @@ const LostVisitsModule = () => {
   style={{
     maxHeight: "400px",
     overflowY: "auto",
-    marginTop: "30px", // Top margin
-    marginBottom: "30px", // Bottom margin
-    marginLeft: "30px", // Left margin (unchanged)
-    marginRight: "300px", // Increased right margin
+    marginTop: "30px", 
+    marginBottom: "30px", 
+    marginLeft: "30px", 
+    marginRight: "300px",
     padding: "50px",
     maxWidth: "100%",
     overflowX: "auto",
@@ -236,9 +236,6 @@ const LostVisitsModule = () => {
 };
 
 export default LostVisitsModule;
-
-
-
 
 
 

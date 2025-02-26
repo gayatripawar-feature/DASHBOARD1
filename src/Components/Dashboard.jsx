@@ -161,6 +161,7 @@
 // export default Dashboard;
 
 
+
 import React, { useState, useCallback } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
@@ -191,7 +192,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column vh-100 ">
       {/* Top Navbar */}
       <nav className="navbar navbar-dark bg-primary px-3">
         <div className="d-flex align-items-center">
@@ -212,85 +213,17 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      {/* <div className="d-flex flex-grow-1">
-        
-        <div
-          className="bg-primary text-white p-3 d-flex flex-column"
-          style={{ width: collapsed ? '80px' : '250px', transition: 'width 0.3s' }}
-        >
-          <ul className="nav flex-column">
-            <SidebarItem to="/" icon={<FaTachometerAlt />} label="Dashboard" collapsed={collapsed} />
+      
 
-            <SidebarDropdown
-              label="Admin Section"
-              icon={<FaUserShield />}
-              collapsed={collapsed}
-              isOpen={sections.admin}
-              toggleOpen={() => toggleSection('admin')}
-              subItems={[
-                { to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" },
-              ]}
-            />
-
-            <SidebarDropdown
-              label="Developer Module"
-              icon={<FaCode />}
-              collapsed={collapsed}
-              isOpen={sections.developer}
-              toggleOpen={() => toggleSection('developer')}
-              subItems={[
-                { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
-              ]}
-            />
-
-            <SidebarDropdown
-              label="Sales Module"
-              icon={<FaChartLine />}
-              collapsed={collapsed}
-              isOpen={sections.sales}
-              toggleOpen={() => toggleSection('sales')}
-              subItems={[
-                { to: "/sales/lostvisits", icon: <FaChartLine />, label: "Lost Visits" },
-              ]}
-            />
-
-            <SidebarDropdown
-              label="CRM Module"
-              icon={<FaCogs />}
-              collapsed={collapsed}
-              isOpen={sections.crm}
-              toggleOpen={() => toggleSection('crm')}
-              subItems={[
-                { to: "/crm/registration", icon: <FaUser />, label: "Registration" },
-              ]}
-            />
-          </ul>
-
-          
-          <div className="mt-auto">
-            <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center" onClick={handleLogout}>
-              <FaSignOutAlt className="me-2" />
-              {!collapsed && 'SignOut'}
-            </button>
-          </div>
-        </div>
-
-     
-        <div className="flex-grow-1 p-4">
-          <Outlet /> 
-        </div>
-      </div> */}
-       {/* </div> */}
-
-       <div className="d-flex">
-  {/* Sidebar */}
+       <div className="d-flex w-100">
+ 
   <div
     className="bg-primary text-white p-3 d-flex flex-column"
     style={{
-      width: collapsed ? '80px' : '250px',  // Sidebar width changes based on 'collapsed' state
-      height: '100vh',  // Full height
-      transition: 'width 0.3s',  // Smooth transition for expanding/collapsing the sidebar
-      flexShrink: 0,  // Prevent sidebar from shrinking
+      width: collapsed ? '80px' : '250px',  
+      height: '100vh',  
+      transition: 'width 0.3s',  
+      flexShrink: 0,  
     }}
   >
     <ul className="nav flex-column">
@@ -330,16 +263,21 @@ const Dashboard = () => {
         isOpen={sections.crm}
         toggleOpen={() => toggleSection('crm')}
         subItems={[
-          { to: "/crm/sharespace", icon: <FaUser />, label: "Sharespacecrm" },
+          { to: "/crm/sharespace", icon: <FaUser />, label: "Share Space" },
           { to: "/crm/registration", icon: <FaUser />, label: "Registration" },
-        { to: "/crm/crm", icon: <FaUser />, label: "CRM" }
+        { to: "/crm/crm", icon: <FaUser />, label: "CRM" },
+        { to: "/crm/HomeLoan", icon: <FaUser />, label: "Home Loan Applicability" },
+        { to: "/crm/OCR", icon: <FaUser />, label: "OCR Collection" },
+        { to: "/crm/Agreement", icon: <FaUser />, label: "Agreement" }
       ]}
       />
    
     </ul>
 
     {/* Logout Option */}
-    <div className="mt-auto">
+    {/* <div className="mt-auto"> */}
+    <div style={{ marginTop: "auto", marginBottom: "50px" }}>
+
       <button className="btn btn-danger w-100 d-flex align-items-center justify-content-center" onClick={handleLogout}>
         <FaSignOutAlt className="me-2" />
         {!collapsed && 'SignOut'}
@@ -348,17 +286,36 @@ const Dashboard = () => {
   </div>
 
   {/* Main Content */}
-  <div
-    className="flex-grow-1 p-4"
+  {/* <div
+    className="flex-grow-1 p-3 "
     style={{
-      paddingLeft: collapsed ? '80px' : '250px',  // Make sure content adjusts based on sidebar width
-      transition: 'padding-left 0.3s',  // Smooth transition for content
+      paddingLeft: collapsed ? '80px' : '250px',  
+      transition: 'padding-left 0.3s',  
+
     }}
-  >
-    <Outlet /> {/* Render the child routes */}
+  > */}
+  <div
+  className="main-content flex-grow-1 p-3"
+  style={{
+   
+    paddingLeft: collapsed ? "80px" : "250px",  
+    transition: "margin-left 0.3s ease-in-out",
+    // background: "#f8f9fa",  
+    // background: "#ffcdd2",
+   background:" #edf7fc",
+    minHeight: "100vh",  
+    borderRadius: "10px",  
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",  
+    
+  }}
+>
+  <Outlet />
+</div>
+
+    <Outlet /> 
   </div>
 </div>
-</div>
+// </div>
   );
 };
 
@@ -388,3 +345,5 @@ const SidebarDropdown = React.memo(({ label, icon, collapsed, isOpen, toggleOpen
 ));
 
 export default Dashboard; 
+
+

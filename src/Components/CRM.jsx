@@ -590,41 +590,7 @@ const HomeLoan = () => {
         </div>
       </div>
 
-      {/* Table Section */}
-      {/* <TableContainer component={Paper}>
-        <Table style={{ tableLayout: 'auto', width: '100%' }}>
-          <TableHead>
-            <TableRow>
-             
-              <TableCell>Flat No.</TableCell>
-              <TableCell>Name Of Allotee</TableCell>
-              <TableCell>Name Of Co-Allotee</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Floor</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Whatsapp No.</TableCell>
-              <TableCell>Rate</TableCell>
-              <TableCell>Agreement Value</TableCell>
-              <TableCell>Booking Date</TableCell>
-              <TableCell>Parking</TableCell>
-              <TableCell>Home Loan Applicability</TableCell>
-              <TableCell>Bank Name</TableCell>
-              <TableCell>Banker Name</TableCell>
-              <TableCell>Mobile No</TableCell>
-              <TableCell>Loan Acc No</TableCell>
-              <TableCell>Loan Amount</TableCell>
-              <TableCell>Sanction Letter</TableCell>
-              <TableCell>Loan Cert</TableCell>
-              <TableCell>Booking Cancellation Reason</TableCell>
-              <TableCell>Booking Confirmation Mail</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {displayLoans()}
-          </TableBody>
-        </Table>
-      </TableContainer> */}
+  
 
 <TableContainer component={Paper}>
   <Table style={{ tableLayout: 'auto', width: '100%' }}>

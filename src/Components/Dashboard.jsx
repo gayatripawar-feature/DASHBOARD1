@@ -300,6 +300,8 @@ const Dashboard = () => {
    
     paddingLeft: collapsed ? "80px" : "250px",  
     transition: "margin-left 0.3s ease-in-out",
+    width: collapsed ? "calc(100% - 80px)" : "calc(100% - 250px)",
+
     // background: "#f8f9fa",  
     // background: "#ffcdd2",
    background:" #edf7fc",
@@ -312,7 +314,23 @@ const Dashboard = () => {
   <Outlet />
 </div>
 
-    <Outlet /> 
+{/* <div
+  className="main-content flex-grow-1 p-3"
+  style={{
+    paddingLeft: collapsed ? "80px" : "250px",
+    transition: "all 0.3s ease-in-out",
+    background: "#edf7fc",
+    minHeight: "100vh",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    width: collapsed ? "calc(100% - 80px)" : "calc(100% - 250px)", // Adjust width dynamically
+  }}
+>
+  {/* <Outlet /> 
+</div> */}
+
+
+    {/* <Outlet />  */}
   </div>
 </div>
 // </div>

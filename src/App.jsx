@@ -11,6 +11,7 @@ import CRM from "./Components/CRM";
 import Registration from "./Components/Registration";
 import HomeLoan from './Components/HomeLoan';
 import OCR from "./Components/OCR";
+import Agreement from './Components/Agreement';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="crm/registration" element={<Registration />} /> 
           <Route path="crm/HomeLoan" element={<HomeLoan />} />
           <Route path= "crm/ocr" element={<OCR />} />
+          <Route path ="crm/Agreement" element={<Agreement />} />
 
         </Route>
       </Routes>

@@ -11,7 +11,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, MenuItem, TextField } from '@mui/material';
-import { FaEye } from 'react-icons/fa'; // Ensure you have the FaEye icon imported if you're using it
+import { FaEye } from 'react-icons/fa'; 
 
 const fetchLoansData = async () => {
   const response = await fetch('/api/getOCRCollection');
@@ -118,7 +118,7 @@ const HomeLoan = () => {
 
   const displayLoans = () => {
     return filteredLoans.slice(start, end).map((loan, index) => (
-      <TableRow key={loan.flatNo}>
+      <TableRow key={loan.flatNo}  sx={{background: "linear-gradient(to right, #ffd3e3, #ffebb7)"}}>
         <TableCell>{loan.flatNo}</TableCell>
         <TableCell>{loan.nameOfAllotee}</TableCell>
         <TableCell>{loan.nameOfCoAllotee}</TableCell>
@@ -156,7 +156,7 @@ const HomeLoan = () => {
 
   return (
     <div className="main-content">
-      <h6 className='mb-5'>Sales Module / Home Loan Management</h6>
+      <h6 className='mb-3'>Sales Module / Home Loan Management</h6>
 
       {/* CRM Display Button */}
       <div className="d-flex align-items-center mb-3">
@@ -243,32 +243,32 @@ const HomeLoan = () => {
       </div>
 
       {/* Table Section */}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper}  sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table style={{ tableLayout: 'auto', width: '100%' }}>
           <TableHead>
-            <TableRow>
+            <TableRow sx={{ bgcolor: "primary.main" }}>
               {/* Table Headers */}
-              <TableCell>Flat No.</TableCell>
-              <TableCell>Name Of Allotee</TableCell>
-              <TableCell>Name Of Co-Allotee</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Floor</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Whatsapp No.</TableCell>
-              <TableCell>Rate</TableCell>
-              <TableCell>Agreement Value</TableCell>
-              <TableCell>Booking Date</TableCell>
-              <TableCell>Parking</TableCell>
-              <TableCell>Home Loan Applicability</TableCell>
-              <TableCell>Bank Name</TableCell>
-              <TableCell>Banker Name</TableCell>
-              <TableCell>Mobile No</TableCell>
-              <TableCell>Loan Acc No</TableCell>
-              <TableCell>Loan Amount</TableCell>
-              <TableCell>Sanction Letter</TableCell>
-              <TableCell>Loan Cert</TableCell>
-              <TableCell>Booking Cancellation Reason</TableCell>
-              <TableCell>Booking Confirmation Mail</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Flat No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Co-Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Type</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Floor</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Email</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Whatsapp No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Rate</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Agreement Value</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Date</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Parking</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Home Loan Applicability</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Bank Name</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Banker Name</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Mobile No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Acc No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Amount</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Sanction Letter</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Cert</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Cancellation Reason</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Confirmation Mail</TableCell>
             </TableRow>
           </TableHead>
 

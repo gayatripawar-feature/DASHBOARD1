@@ -59,6 +59,39 @@ const Registration = () => {
       checklistOfDocumentCollection: "Pending",
       uploadIndex2: "Uploaded",
       documentHandover: "No",
+    },{
+      flatNo: "A101",
+      nameOfAllotee: "John Doe",
+      nameOfCoAllotee: "Jane Doe",
+      type: "2 BHK",
+      floor: "1st",
+      emailId: "john.doe@example.com",
+      whatsappMobileNo: "+91 9876543210",
+      rate: "₹75,00,000",
+      agreementValue: "₹70,00,000",
+      dateOfBooking: "2024-02-01",
+      parking: "Yes",
+      registrationNumber: "REG12345",
+      checklistOfDocumentCollection: "Pending",
+      uploadIndex2: "Uploaded",
+      documentHandover: "No",
+    },
+    {
+      flatNo: "A101",
+      nameOfAllotee: "John Doe",
+      nameOfCoAllotee: "Jane Doe",
+      type: "2 BHK",
+      floor: "1st",
+      emailId: "john.doe@example.com",
+      whatsappMobileNo: "+91 9876543210",
+      rate: "₹75,00,000",
+      agreementValue: "₹70,00,000",
+      dateOfBooking: "2024-02-01",
+      parking: "Yes",
+      registrationNumber: "REG12345",
+      checklistOfDocumentCollection: "Pending",
+      uploadIndex2: "Uploaded",
+      documentHandover: "No",
     }
   ]
 
@@ -151,7 +184,7 @@ const Registration = () => {
     return filteredLoans.slice(start, end).map((loan, index) => (
   
 
-      <TableRow key={loan.flatNo}>
+      <TableRow >
   <TableCell>{loan.flatNo}</TableCell>
   <TableCell>{loan.nameOfAllotee}</TableCell>
   <TableCell>{loan.nameOfCoAllotee}</TableCell>
@@ -184,7 +217,7 @@ const Registration = () => {
 
   return (
     <div className="main-content">
-      <h6 className='mb-5'>Sales Module / Registration Management</h6>
+      <h6 className='mb-3'>Sales Module / Registration Management</h6>
 
       {/* CRM Display Button */}
       <div className="d-flex align-items-center mb-3">
@@ -273,26 +306,26 @@ const Registration = () => {
 
 
 
-<TableContainer component={Paper} sx={{ backgroundColor: 'white' }}>
+<TableContainer component={Paper} sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
   <Table sx={{ tableLayout: 'auto', width: '100%' }}>
     <TableHead >
-      <TableRow sx={{ backgroundColor: '#800080' }}>
+      <TableRow sx={{ bgcolor: "primary.main" }}>
         {/* Updated Table Headers */}
-        <TableCell sx={{ fontWeight: 'bold' }}>FLAT NO.</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'  }}>NAME OF ALLOTEE</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>NAME OF CO-ALLOTEE</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>TYPE</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>FLOOR</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'}}>EMAIL ID</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>WHATSAPP MOBILE NO.</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>RATE</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'}}>AGREEMENT VALUE</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'  }}>DATE OF BOOKING</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'  }}>PARKING</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>REGISTRATION NUMBER</TableCell>
-        <TableCell sx={{ fontWeight: 'bold'}}>CHECKLIST OF DOCUMENT COLLECTION (AFTER AGREEMENT)</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>UPLOAD INDEX 2</TableCell>
-        <TableCell sx={{ fontWeight: 'bold' }}>DOCUMENT HANDOVER</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLAT NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF ALLOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF CO-ALLOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TYPE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>EMAIL ID</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>WHATSAPP MOBILE NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>RATE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>AGREEMENT VALUE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF BOOKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PARKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>REGISTRATION NUMBER</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>CHECKLIST OF DOCUMENT COLLECTION (AFTER AGREEMENT)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>UPLOAD INDEX 2</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DOCUMENT HANDOVER</TableCell>
       </TableRow>
     </TableHead>
 

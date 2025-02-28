@@ -315,7 +315,7 @@ const fetchLoansData = async () => {
   return response.json();
 };
 
-const HomeLoan = () => {
+const CRM = () => {
   const [loans, setLoans] = useState([]);
   const [filteredLoans, setFilteredLoans] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -329,6 +329,7 @@ const HomeLoan = () => {
   const [parking, setParking] = useState('');
   const [floor, setFloor] = useState('');
   const [rate, setRate] = useState('');
+  const [ProjectType,setProjectType] = useState('');
   
   // State to toggle filter visibility
   const [showFilters, setShowFilters] = useState(false);
@@ -350,6 +351,8 @@ const HomeLoan = () => {
     setFilteredLoans(data);
   };
 
+  
+
   const getFilterOptions = (type) => {
     switch (type) {
       case "Flat Type":
@@ -364,10 +367,13 @@ const HomeLoan = () => {
           rates.push(`₹${i.toLocaleString()}`);
         }
         return rates;
+      case "Project Type":
+        return ["Shubh Aarambh", "Elara", "Infini", "Serenity", "Prime", "PYB", "Onella Tower", "Aradhyam", "Stella"];
       default:
         return [];
     }
   };
+  
 
   const filterLoansByDate = () => {
     const filtered = loans.filter(loan => {
@@ -388,6 +394,8 @@ const HomeLoan = () => {
     setCurrentPage(1);
   };
 
+ 
+
   const resetFilters = () => {
     setStartDate('');
     setEndDate('');
@@ -395,12 +403,13 @@ const HomeLoan = () => {
     setParking('');
     setFloor('');
     setRate('');
+    setProjectType('');  // Added this line for Project Type
     setFilteredLoans(loans);
     setCurrentPage(1);
     setFilterType('');
     setFilterValue('');
   };
-
+  
   const handlePagination = (event, newPage) => {
     setCurrentPage(newPage + 1);
   };
@@ -415,29 +424,7 @@ const HomeLoan = () => {
 
   const displayLoans = () => {
     return filteredLoans.slice(start, end).map((loan, index) => (
-      // <TableRow key={loan.flatNo}>
-      //   <TableCell>{loan.flatNo}</TableCell>
-      //   <TableCell>{loan.nameOfAllotee}</TableCell>
-      //   <TableCell>{loan.nameOfCoAllotee}</TableCell>
-      //   <TableCell>{loan.type}</TableCell>
-      //   <TableCell>{loan.floor}</TableCell>
-      //   <TableCell>{loan.emailId}</TableCell>
-      //   <TableCell>{loan.whatsappMobileNo}</TableCell>
-      //   <TableCell>{loan.rate}</TableCell>
-      //   <TableCell>{loan.agreementValue}</TableCell>
-      //   <TableCell>{loan.dateOfBooking}</TableCell>
-      //   <TableCell>{loan.parking}</TableCell>
-      //   <TableCell>{loan.homeLoanApplicability}</TableCell> {/* New column */}
-      //   <TableCell>{loan.bankName}</TableCell> {/* New column */}
-      //   <TableCell>{loan.bankerName}</TableCell> {/* New column */}
-      //   <TableCell>{loan.mobileNo}</TableCell> {/* New column */}
-      //   <TableCell>{loan.loanAccountNo}</TableCell> {/* New column */}
-      //   <TableCell>{loan.loanAmount}</TableCell> {/* New column */}
-      //   <TableCell>{loan.sanctionLetter}</TableCell> {/* New column */}
-      //   <TableCell>{loan.homeLoanSanctionCertificateCollected}</TableCell> {/* New column */}
-      //   <TableCell>{loan.bookingCancellationReason}</TableCell> {/* New column */}
-      //   <TableCell>{loan.bookingConfirmationMailSent}</TableCell> {/* New column */}
-      // </TableRow>
+    
       <TableRow key={loan.flatNo}>
   <TableCell>{loan.action}</TableCell> {/* New column */}
   <TableCell>{loan.timestamp}</TableCell> {/* New column */}
@@ -541,6 +528,7 @@ const HomeLoan = () => {
             <MenuItem value="Parking">Parking</MenuItem>
             <MenuItem value="Floor">Floor</MenuItem>
             <MenuItem value="Rate">Rate</MenuItem>
+            <MenuItem value="Project Type">Project Type</MenuItem>
           </TextField>
 
           {/* Filter Value */}
@@ -592,59 +580,61 @@ const HomeLoan = () => {
 
   
 
-<TableContainer component={Paper}>
+<TableContainer component={Paper}  sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
   <Table style={{ tableLayout: 'auto', width: '100%' }}>
     <TableHead>
-      <TableRow>
+  
+
+      <TableRow sx={{ bgcolor: "primary.main" }}>
         {/* Table Headers */}
-        <TableCell>ACTION</TableCell>
-        <TableCell>TIMESTAMP</TableCell>
-        <TableCell>ENQUIRY NO.</TableCell>
-        <TableCell>PROJECT NAME</TableCell>
-        <TableCell>DATE OF FLAT BOOKING</TableCell>
-        <TableCell>NAME OF ALOTEE</TableCell>
-        <TableCell>SOURCE NAME</TableCell>
-        <TableCell>DATE OF BIRTH</TableCell>
-        <TableCell>OCCUPATION</TableCell>
-        <TableCell>PAN NO.</TableCell>
-        <TableCell>AADHAR NO.</TableCell>
-        <TableCell>MOBILE NO.</TableCell>
-        <TableCell>ALTERNATE MOBILE NO</TableCell>
-        <TableCell>WHATSAPP NO</TableCell>
-        <TableCell>EMAIL ID</TableCell>
-        <TableCell>ADDRESS</TableCell>
-        <TableCell>NAME OF CO-ALOTEE</TableCell>
-        <TableCell>DATE OF BIRTH (CO-ALOTEE)</TableCell>
-        <TableCell>OCCUPATION (CO-ALOTEE)</TableCell>
-        <TableCell>PAN NO. (CO-ALOTEE)</TableCell>
-        <TableCell>AADHAR NO. (CO-ALOTEE)</TableCell>
-        <TableCell>MOBILE NO. & EMAIL (CO-ALOTEE)</TableCell>
-        <TableCell>FLAT NO.</TableCell>
-        <TableCell>TYPE</TableCell>
-        <TableCell>WING</TableCell>
-        <TableCell>SOLD RATE</TableCell>
-        <TableCell>CARPET AREA IN (SQ. MTR.)</TableCell>
-        <TableCell>ENCLOSED BALCONY IN (SQ. MTR.)</TableCell>
-        <TableCell>OPEN BALCONY IN (SQ. MTR.)</TableCell>
-        <TableCell>TERRACE IN (SQ. MTR.)</TableCell>
-        <TableCell>PARKING</TableCell>
-        <TableCell>FLOOR</TableCell>
-        <TableCell>TOTAL CONSIDERATION /AGREEMENT VALUE</TableCell>
-        <TableCell>BOOKING AMOUNT / ADVANCE PAYMENT</TableCell>
-        <TableCell>STAMP DUTY (7% OF AGREEMENT COST)</TableCell>
-        <TableCell>REGISTRATION FEE(1% OF AGREEMENT COST)</TableCell>
-        <TableCell>GST AMOUNT</TableCell>
-        <TableCell>PAN CARD(OF BOTH)</TableCell>
-        <TableCell>AADHAR CARD(OF BOTH)</TableCell>
-        <TableCell>MARRIAGE CERTIFICATE (IF AVAILABLE)</TableCell>
-        <TableCell>PASSPORT SIZE PHOTO (OF BOTH)</TableCell>
-        <TableCell>ANY OTHER</TableCell>
-        <TableCell>BOOKING AMOUNT</TableCell>
-        <TableCell>PAYMENT MODE</TableCell>
-        <TableCell>CHEQUE/TRN NO.</TableCell>
-        <TableCell>CHEQUE/TRN DATE</TableCell>
-        <TableCell>BANK NAME</TableCell>
-        <TableCell>BANK DETAILS</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ENQUIRY NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PROJECT NAME</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF FLAT BOOKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF ALOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>SOURCE NAME</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF BIRTH</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCCUPATION</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PAN NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>AADHAR NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>MOBILE NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ALTERNATE MOBILE NO</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>WHATSAPP NO</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>EMAIL ID</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ADDRESS</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF CO-ALOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF BIRTH (CO-ALOTEE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCCUPATION (CO-ALOTEE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PAN NO. (CO-ALOTEE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>AADHAR NO. (CO-ALOTEE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>MOBILE NO. & EMAIL (CO-ALOTEE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLAT NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TYPE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>WING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>SOLD RATE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>CARPET AREA IN (SQ. MTR.)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ENCLOSED BALCONY IN (SQ. MTR.)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>OPEN BALCONY IN (SQ. MTR.)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TERRACE IN (SQ. MTR.)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PARKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TOTAL CONSIDERATION /AGREEMENT VALUE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>BOOKING AMOUNT / ADVANCE PAYMENT</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>STAMP DUTY (7% OF AGREEMENT COST)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>REGISTRATION FEE(1% OF AGREEMENT COST)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>GST AMOUNT</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PAN CARD(OF BOTH)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>AADHAR CARD(OF BOTH)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>MARRIAGE CERTIFICATE (IF AVAILABLE)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PASSPORT SIZE PHOTO (OF BOTH)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>ANY OTHER</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>BOOKING AMOUNT</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PAYMENT MODE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>CHEQUE/TRN NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>CHEQUE/TRN DATE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>BANK NAME</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" }}>BANK DETAILS</TableCell>
       </TableRow>
     </TableHead>
 
@@ -663,4 +653,4 @@ const HomeLoan = () => {
   );
 };
 
-export default HomeLoan;
+export default CRM;

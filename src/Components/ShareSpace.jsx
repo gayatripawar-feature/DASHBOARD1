@@ -36,23 +36,22 @@ const ShareSpace = () => {
     setActiveIcon(iconName);
   };
 
-  // Out Share Button handler
   const handleOutShare = () => {
-    setShowForm(true); // Show the form when Out Share button is clicked
-    setShowProjectTable(false); // Hide the Project Display Table
-    // Hide the Shared With Me Table if it's visible
+    setShowForm(true); 
+    setShowProjectTable(false); 
+    
     if (activeIcon === 'shared') {
-      setSharedWithMeRows([]); // Clear the Shared With Me Table
+      setSharedWithMeRows([]); 
     }
   };
 
-  // Cancel Button handler
+  
   const handleCancel = () => {
-    setShowForm(false); // Hide the form when Cancel button is clicked
-    setShowProjectTable(true); // Show the Project Display Table again
+    setShowForm(false); 
+    setShowProjectTable(true); 
   };
 
-  // Handle share to change (Checkboxes)
+  
   const handleShareToChange = (e, index) => {
     const newRows = [...rows];
     if (e.target.checked) {
@@ -63,7 +62,7 @@ const ShareSpace = () => {
     setRows(newRows);
   };
 
-  // Handle document type change
+
   const handleDocumentTypeChange = (e, index) => {
     const newRows = [...rows];
     newRows[index].documentType = e.target.value;
@@ -104,15 +103,15 @@ const ShareSpace = () => {
   // Handle rows per page change
   const handleRowsPerPageChange = (e) => {
     setRowsPerPage(Number(e.target.value));
-    setCurrentPage(1); // Reset to first page when rows per page is changed
+    setCurrentPage(1); 
   };
 
-  // Pagination calculation (calculating the rows to display for current page)
+ 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = sharedWithMeRows.slice(indexOfFirstRow, indexOfLastRow);
 
-  // Page numbers based on the total rows and rows per page
+  
   const totalPages = Math.ceil(sharedWithMeRows.length / rowsPerPage);
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -123,9 +122,9 @@ const ShareSpace = () => {
     <div className="container my-4">
       <h2 className="fs-6 mb-3">Developer Module / Share Space</h2>
 
-      {/* Icons Row */}
+    
       <div className="d-flex align-items-center gap-4">
-        {/* Project Display Icon */}
+        
         <div
           className="d-flex align-items-center gap-2 p-2"
           onClick={() => handleToggle('project')}
@@ -141,7 +140,7 @@ const ShareSpace = () => {
           {activeIcon === 'project' && <span>Project Display</span>}
         </div>
 
-        {/* Shared With Me Icon */}
+      
         <div
           className="d-flex align-items-center gap-2 p-2"
           onClick={() => handleToggle('shared')}

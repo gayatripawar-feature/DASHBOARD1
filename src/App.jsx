@@ -12,6 +12,9 @@ import Registration from "./Components/Registration";
 import HomeLoan from './Components/HomeLoan';
 import OCR from "./Components/OCR";
 import Agreement from './Components/Agreement';
+import Architect from './Components/Architect';
+import Demand from './Components/Demand';
+import Banker from './Components/Banker';
 
 const App = () => {
   return (
@@ -20,6 +23,7 @@ const App = () => {
        
         <Route path="/" element={<Dashboard />}>
         <Route path="admin/salesperson" element={<SalesModule />} />
+        <Route path="admin/banker" element={<Banker />} />
         <Route path="/developer/sharespace" element={<ShareSpace />} />
         <Route path="/sales/lostvisits"  element={<LostVisitsModule />} />
          
@@ -29,6 +33,8 @@ const App = () => {
           <Route path="crm/HomeLoan" element={<HomeLoan />} />
           <Route path= "crm/ocr" element={<OCR />} />
           <Route path ="crm/Agreement" element={<Agreement />} />
+          <Route path="crm/architect" element={<Architect/>} />
+          <Route path ="crm/Demand" element={<Demand />} />
 
         </Route>
       </Routes>

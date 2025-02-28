@@ -235,7 +235,11 @@ const Dashboard = () => {
         collapsed={collapsed}
         isOpen={sections.admin}
         toggleOpen={() => toggleSection('admin')}
-        subItems={[{ to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" }]}
+        subItems={[
+          { to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" },
+          { to: "/admin/banker", icon: <FaUserShield />, label: "Banker Details" }
+
+        ]}
       />
 
       <SidebarDropdown
@@ -244,7 +248,10 @@ const Dashboard = () => {
         collapsed={collapsed}
         isOpen={sections.developer}
         toggleOpen={() => toggleSection('developer')}
-        subItems={[{ to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" }]}
+        subItems={[
+          { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
+          { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
+         ] }
       />
 
       <SidebarDropdown
@@ -268,7 +275,9 @@ const Dashboard = () => {
         { to: "/crm/crm", icon: <FaUser />, label: "CRM" },
         { to: "/crm/HomeLoan", icon: <FaUser />, label: "Home Loan Applicability" },
         { to: "/crm/OCR", icon: <FaUser />, label: "OCR Collection" },
-        { to: "/crm/Agreement", icon: <FaUser />, label: "Agreement" }
+        { to: "/crm/Agreement", icon: <FaUser />, label: "Agreement" },
+        { to: "/crm/Architect", icon: <FaUser />, label: "Engineer & Architect Letter" },
+        { to: "/crm/Demand", icon: <FaUser />, label: "Demand Raised" },
       ]}
       />
    
@@ -330,15 +339,14 @@ const Dashboard = () => {
 </div> */}
 
 
-    {/* <Outlet />  */}
   </div>
 </div>
-// </div>
+
   );
 };
 
 const SidebarItem = React.memo(({ to, icon, label, collapsed }) => (
-  <li className="nav-item mb-3">
+  <li className="nav-item">
     <Link to={to} className="nav-link text-white d-flex align-items-center">
       {icon}
       {!collapsed && <span className="ms-2">{label}</span>}

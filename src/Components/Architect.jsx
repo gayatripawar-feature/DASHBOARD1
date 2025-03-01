@@ -170,15 +170,15 @@ const [isCollapsed, setIsCollapsed] = useState(false);
 
       </div>
 
-      <TableContainer component={Paper} className="mt-4">
+      <TableContainer component={Paper} className="mt-4" sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table>
           <TableHead>
-            <TableRow sx={{ background: "linear-gradient(to right, #ffd3e3, #ffebb7)" }}>
-              <TableCell className='fw-bold fs-5'>ACTION</TableCell>
-              <TableCell className='fw-bold fs-5'>TIMESTAMP</TableCell>
-              <TableCell className='fw-bold fs-5'>SLAB</TableCell>
-              <TableCell className='fw-bold fs-5'>LETTER TYPE</TableCell>
-              <TableCell className='fw-bold fs-5'>DOCUMENT</TableCell>
+            <TableRow sx={{ bgcolor: "primary.main" }}>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>SLAB</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>LETTER TYPE</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>DOCUMENT</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

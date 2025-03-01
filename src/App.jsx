@@ -15,6 +15,7 @@ import Agreement from './Components/Agreement';
 import Architect from './Components/Architect';
 import Demand from './Components/Demand';
 import Banker from './Components/Banker';
+import BasicInfo from './Components/BasicInfo';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="admin/salesperson" element={<SalesModule />} />
         <Route path="admin/banker" element={<Banker />} />
         <Route path="/developer/sharespace" element={<ShareSpace />} />
+        <Route path ="/developer/basicinfo" element={<BasicInfo />} />
         <Route path="/sales/lostvisits"  element={<LostVisitsModule />} />
          
         

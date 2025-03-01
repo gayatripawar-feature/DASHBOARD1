@@ -170,20 +170,20 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
 
       </div>
 
-      <TableContainer component={Paper} className="mt-4">
+      <TableContainer component={Paper} className="mt-4" sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table>
           <TableHead>
-            <TableRow sx={{ background: "linear-gradient(to right, #ffd3e3, #ffebb7)" }}>
-              <TableCell className='fw-bold fs-5'>
+            <TableRow sx={{ bgcolor: "primary.main" }}>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>
               FLAT NO.</TableCell>
-              <TableCell className='fw-bold fs-5'>NAME OF ALLOTEE</TableCell>
-              <TableCell className='fw-bold fs-5'>NAME OF CO-ALLOTEE</TableCell>
-              <TableCell className='fw-bold fs-5'>TYPE</TableCell>
-              <TableCell className='fw-bold fs-5'>FLOOR</TableCell>
-              <TableCell className='fw-bold fs-5'>EMAIL ID</TableCell>
-              <TableCell className='fw-bold fs-5'>WHATSAPP NUMBER
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF ALLOTEE</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF CO-ALLOTEE</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>TYPE</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>EMAIL ID</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>WHATSAPP NUMBER
               </TableCell>
-              <TableCell className='fw-bold fs-5'>Rate</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Rate</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

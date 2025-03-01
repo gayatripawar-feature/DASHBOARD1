@@ -250,7 +250,7 @@ const Dashboard = () => {
         toggleOpen={() => toggleSection('developer')}
         subItems={[
           { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
-          { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
+          { to: "/developer/basicinfo", icon: <FaCode />, label: "Basic Information" },
          ] }
       />
 

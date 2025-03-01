@@ -177,7 +177,7 @@ const ShareSpace = () => {
      
 
 <button
-  className="btn btn-secondary ms-2"
+  className="btn btn-secondary ms-2" style ={{backgroundColor:"#800080"}}
   disabled={currentPage === 1}
   onClick={() => handlePageChange(currentPage - 1)}
 >
@@ -192,7 +192,7 @@ const ShareSpace = () => {
 
 
 <button
-  className="btn btn-secondary ms-2"
+  className="btn btn-secondary ms-2" style ={{backgroundColor:"#800080"}}
   disabled={currentPage === totalPages}
   onClick={() => handlePageChange(currentPage + 1)}
 >
@@ -435,7 +435,7 @@ const ShareSpace = () => {
 )}
 
 
-{/* Shared With Me Table (Visible when 'Shared With Me' is selected) */}
+
 {activeIcon === 'shared' && (
   <div className="mt-4">
     {/* Table */}
@@ -459,13 +459,13 @@ const ShareSpace = () => {
             <td>{row.documentType}</td>
             <td>{row.document}</td>
             <td>
-              {/* View Icon in the Action Column */}
+            
               <button
                 className="btn btn-info btn-sm"
                 onClick={() => {
-                  // You can define a function here to handle viewing the document
+                
                   console.log('Viewing document:', row.document);
-                  // For example, you can open the document or show a modal
+                  
                 }}
               >
                 <FaEye size={20} />

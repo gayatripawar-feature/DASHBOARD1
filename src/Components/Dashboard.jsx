@@ -251,6 +251,7 @@ const Dashboard = () => {
         subItems={[
           { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
           { to: "/developer/basicinfo", icon: <FaCode />, label: "Basic Information" },
+          {to :"/developer/projectinventory",icon : <FaCode />,label:"Project Inventory" }
          ] }
       />
 

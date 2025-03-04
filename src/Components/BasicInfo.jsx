@@ -2043,10 +2043,16 @@
 
 
 
+// ==================
 
 import React, { useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TextField, Grid } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,Box,Tabs, Tab, Button, TextField, Grid } from '@mui/material';
 import { FaEye, FaBuilding, FaFileDownload, FaPlus, FaTrash } from "react-icons/fa";
+import FirmTable from './FirmTable';
+import DisplayTable from "./DisplayTable";
+import LandownerTable from "./LandownerTable";
+import FlatAllotment from './FlatAllotement';
+
 
 const fetchLoansData = async () => {
   const response = await fetch('/api/getOCRCollection');
@@ -2062,6 +2068,28 @@ const sections = [
 ];
 
 
+// const FirmTable = () => {
+//   return (
+//     <TableContainer component={Paper}>
+//       <Table>
+//         <TableHead>
+//           <TableRow>
+//             <TableCell>Column 1</TableCell>
+//             <TableCell>Column 2</TableCell>
+//           </TableRow>
+//         </TableHead>
+//         <TableBody>
+//           <TableRow>
+//             <TableCell>Data 1</TableCell>
+//             <TableCell>Data 2</TableCell>
+//           </TableRow>
+//         </TableBody>
+//       </Table>
+//     </TableContainer>
+//   );
+// };
+
+
   
 const BasicInfo = () => {
   const [loans, setLoans] = useState([]);
@@ -2072,6 +2100,11 @@ const BasicInfo = () => {
   const [phases, setPhases] = useState([]);
   const [showLandownerForm, setShowLandownerForm] = useState(false); 
   const [showFlatForm, setShowFlatForm] = useState(false); 
+  const [selectedTab, setSelectedTab] = useState("firm");
+  const [projectData, setProjectData] = useState([]);
+  // const[FlatAllotement , setFlatAllotement] = useState([false]);
+  const [showFlatAllotment, setShowFlatAllotment] = useState(false);
+
   useEffect(() => {
     loadLoansData();
   }, []);
@@ -2081,16 +2114,38 @@ const BasicInfo = () => {
     setLoans(data);
   };
 
+  const handleTabChange = (_, newValue) => {
+    setSelectedTab(newValue);
+  };
+
+
   const handleToggleSection = (index) => {
     if (sections[index].label === "Download PDF") {
       handleDownloadPDF();
       return;
     }
-
+    console.log("Clicked Section Index:", index);
+    console.log("Selected Tab Before Update:", selectedTab);
     setExpandedSection(index);  
+
+      // Set selected tab dynamically based on the section clicked
+  if (sections[index].label === "Project Display") {
+    setSelectedTab("display");
+  } else if (sections[index].label === "Firm Display") {
+    setSelectedTab("firm");
+  } else if (sections[index].label === "LandOwner Display") {
+    setSelectedTab("landowner");
+  } else if (sections[index].label === "Flat Allotement Display") {
+    setSelectedTab("allotement");
+  }
+
+
+  
     setShowFirmForm(false);
     setShowProjectForm(false); 
     setShowLandownerForm(false); 
+    // setFlatAllotement(false);
+    setShowFlatForm(false);
   };
 
   const [newPhase, setNewPhase] = useState({
@@ -2100,6 +2155,11 @@ const BasicInfo = () => {
   });
 
   
+   {/* Table Section */}
+   {selectedTab === "firm" && <FirmTable />}
+   {selectedTab === "display" && <DisplayTable />}
+   {selectedTab === "landowner" && <LandownerTable />}
+   {selectedTab === "allotement" && <FlatAllotement/>}
 
   const handleDownloadPDF = () => {
     const link = document.createElement("a");
@@ -2126,14 +2186,27 @@ const BasicInfo = () => {
     setPhases(phases.filter((_, i) => i !== index));
   };
 
+ 
+
   const handleCreateFirm = () => {
     setShowFirmForm(false);
+    setShowProjectForm(false);
   };
+
+  const handleCreateProject = () => {
+    setShowProjectForm(true);
+  };
+
 
   return (
     <div className="main-content">
       <h6>Developer Module / Basic Information Management</h6>
-      
+     
+   
+ 
+    
+
+
       <div className="d-flex align-items-center mb-3">
         {sections.map((section, index) => (
           <Button
@@ -2150,12 +2223,18 @@ const BasicInfo = () => {
         ))}
       </div>
 
-      {expandedSection === 0 && (
+      {expandedSection === 0 &&  selectedTab === "firm" && (
         <div className="content-container mt-3">
           {!showFirmForm ? (
+            <>
             <Button variant="contained" color="primary" onClick={() => setShowFirmForm(true)}>
               + Create Firm
             </Button>
+             <div className="mt-3">
+             {/* <FirmTable /> */}
+             <FirmTable firms={loans} />
+           </div>
+           </>
           ) : (
             <div className="firm-form mt-4 p-3 border rounded">
               <h5>Firm Details</h5>
@@ -2192,6 +2271,14 @@ const BasicInfo = () => {
               </Button>
             </div>
           )}
+
+
+          {/* <table>
+            <tr>
+              <th>wd</th>
+              <th>ssd</th>
+            </tr>
+          </table> */}
         </div>
       )}
 
@@ -2326,12 +2413,28 @@ const BasicInfo = () => {
 )} */}
 
 
-{expandedSection === 1 && (
+{expandedSection === 1 && selectedTab === "display" && (
   <div className="content-container mt-3">
+   
     {!showProjectForm ? (
-      <Button variant="contained" color="primary" onClick={() => setShowProjectForm(true)}>
+       <>
+      {/* <Button variant="contained" color="primary" onClick={() => setShowProjectForm(true)}>
         + Create Project
-      </Button>
+      </Button> */}
+
+<Button variant="contained" color="primary" onClick={() => {
+   console.log("Before:", showProjectForm);
+   setShowProjectForm(true);
+   console.log("After:", showProjectForm);
+}}>
++ Create Project
+</Button>
+
+
+<div className='mt-3'>
+<DisplayTable data={projectData} />
+</div>
+   </>
     ) : (
       <div className="project-form mt-4 p-3 border rounded" style={{ maxHeight: '500px', overflowY: 'auto' }}>
         <h5>Project Details</h5>
@@ -2508,12 +2611,20 @@ const BasicInfo = () => {
   </div>
 )} */}
 
-{expandedSection === 2 && (
+{expandedSection === 2 && selectedTab === "landowner" && (
   <div className="content-container mt-3">
+   
     {!showLandownerForm ? (
+       <>
       <Button variant="contained" color="primary" onClick={() => setShowLandownerForm(true)}>
         + Display LandOwner Info
       </Button>
+
+<div className='mt-3'>
+<LandownerTable data={projectData} />
+</div>
+</>
+
     ) : (
       <div
         className="landowner-form mt-4 p-3 border rounded"
@@ -2558,12 +2669,23 @@ const BasicInfo = () => {
   </div>
 )}
 
-{expandedSection === 3 && (
+{expandedSection === 3 && selectedTab === "allotement" && (
     <div className="content-container mt-3">
-      {!showLandownerForm ? (
-        <Button variant="contained" color="primary" onClick={() => setShowLandownerForm(true)}>
+     
+      {! showFlatForm ? (
+         <>
+        {/* <Button variant="contained" color="primary" onClick={() => setShowFlatForm(true)}>
           + Flat Allotement Info
-        </Button>
+        </Button> */}
+        <Button variant="contained" color="primary" onClick={() => setShowFlatForm(true)}>
+  + Flat Allotement Info
+</Button>
+
+<div className='mt-3'>
+<FlatAllotment data={data} />
+</div>
+
+</>
       ) : (
         <div className="landowner-form mt-4 p-3 border rounded">
           <h5>Flat Allotement Display </h5>
@@ -2659,3 +2781,5 @@ const BasicInfo = () => {
 
 
 export default BasicInfo;
+
+

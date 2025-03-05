@@ -251,7 +251,10 @@ const Dashboard = () => {
         subItems={[
           { to: "/developer/sharespace", icon: <FaCode />, label: "Share Space" },
           { to: "/developer/basicinfo", icon: <FaCode />, label: "Basic Information" },
-          {to :"/developer/projectinventory",icon : <FaCode />,label:"Project Inventory" }
+          {to :"/developer/projectinventory",icon : <FaCode />,label:"Project Inventory" },
+          {to :"/developer/costsheet",icon : <FaCode />,label:"Cost Sheet Details" },
+          {to :"/developer/salesmis",icon : <FaCode />,label:"Sales MIS" },
+          {to :"/developer/marketing",icon : <FaCode />,label:"Marketing" },
          ] }
       />
 

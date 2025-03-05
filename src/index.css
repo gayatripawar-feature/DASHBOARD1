@@ -114,3 +114,16 @@ th, td {
   /* background-color: #f4f4f4; */
   /* background-color:""; */
 /* }  */
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.right-buttons {
+  display: flex;
+  gap: 10px; /* Adds space between Previous and Next buttons */
+}

@@ -11,7 +11,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, MenuItem, TextField } from '@mui/material';
-import { FaEye } from 'react-icons/fa'; // Ensure you have the FaEye icon imported if you're using it
+import { FaEye } from 'react-icons/fa'; 
 
 const fetchLoansData = async () => {
   const response = await fetch('/api/getOCRCollection');
@@ -37,7 +37,7 @@ const Registration = () => {
   
   // State to toggle filter visibility
   const [showFilters, setShowFilters] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false); // State for collapse toggle
+  const [isCollapsed, setIsCollapsed] = useState(false); 
   const [filterType, setFilterType] = useState(''); // For the filter selection
   const [filterValue, setFilterValue] = useState(''); // For the selected filter value
 

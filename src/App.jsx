@@ -17,6 +17,9 @@ import Demand from './Components/Demand';
 import Banker from './Components/Banker';
 import BasicInfo from './Components/BasicInfo';
 import ProjectInventory from './Components/ProjectInventory';
+import CostSheet from './Components/CostSheet';
+import Salesmis from './Components/Salesmis';
+import Marketing from './Components/Marketing';
 
 const App = () => {
   return (
@@ -29,6 +32,10 @@ const App = () => {
         <Route path="/developer/sharespace" element={<ShareSpace />} />
         <Route path ="/developer/basicinfo" element={<BasicInfo />} />
         <Route path ="/developer/projectinventory" element={<ProjectInventory />} />
+        <Route path ="/developer/costsheet" element={<CostSheet />} />
+        <Route path ="/developer/salesmis" element={<Salesmis/>} />
+        <Route path="/developer/marketing" element={<Marketing/>}/>
+        
         <Route path="/sales/lostvisits"  element={<LostVisitsModule />} />
          
         

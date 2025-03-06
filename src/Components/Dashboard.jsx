@@ -206,7 +206,7 @@ import React, { useState, useCallback } from "react";
 import { 
   FaBars, FaTachometerAlt, FaUserShield, FaCode, FaChartLine, FaCogs, FaSignOutAlt,
   FaUsers, FaUserCheck, FaHome, FaFileAlt, FaFileSignature, FaStamp, FaDraftingCompass, FaBell,
-  FaInfoCircle, FaBuilding, FaFileInvoiceDollar, FaBullhorn
+  FaInfoCircle, FaBuilding, FaFileInvoiceDollar, FaBullhorn , FaUserTie ,FaLandmark,FaCalendarAlt,FaPeopleArrows
 } from "react-icons/fa";  
 import { useNavigate } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
@@ -239,7 +239,8 @@ const Dashboard = () => {
   return (
     <div className="d-flex flex-column vh-100 ">
       {/* Top Navbar */}
-      <nav className="navbar navbar-dark bg-primary px-3">
+      {/* <nav className="navbar navbar-dark bg-primary px-3"> */}
+      <nav className="navbar navbar-dark  px-3" style={{background:"#3621a9"}}>
         <div className="d-flex align-items-center">
           <button className="btn btn-dark me-3" onClick={toggleSidebar}>
             <FaBars size={20} />
@@ -268,12 +269,16 @@ const Dashboard = () => {
        <div className="d-flex w-100">
  
   <div
-    className="bg-primary text-white p-3 d-flex flex-column"
+    className=" text-white p-3 d-flex flex-column"
     style={{
       width: collapsed ? '80px' : '250px',  
       height: '100vh',  
       transition: 'width 0.3s',  
       flexShrink: 0,  
+      background:"#3621a9",
+      //  background: "linear-gradient(180deg, #ff6347 0%, #2c1a80 100%)",
+
+
     }}
   >
     <ul className="nav flex-column">
@@ -286,9 +291,11 @@ const Dashboard = () => {
         isOpen={sections.admin}
         toggleOpen={() => toggleSection('admin')}
         subItems={[
-          { to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" },
-          { to: "/admin/banker", icon: <FaUserShield />, label: "Banker Details" }
-
+          // { to: "/admin/salesperson", icon: <FaUserShield />, label: "Sales Person" },
+          // { to: "/admin/banker", icon: <FaUserShield />, label: "Banker Details" }
+          { to: "/admin/salesperson", icon: <FaUserTie />, label: "Sales Person" },
+          { to: "/admin/banker", icon: <FaLandmark />, label: "Banker Details" }
+          
         ]}
       />
 
@@ -320,7 +327,17 @@ const Dashboard = () => {
         collapsed={collapsed}
         isOpen={sections.sales}
         toggleOpen={() => toggleSection('sales')}
-        subItems={[{ to: "/sales/lostvisits", icon: <FaChartLine />, label: "Lost Visits" }]}
+        subItems={[
+          // { to: "/sales/lostvisits", icon: <FaChartLine />, label: "Lost Visits" },
+          // { to: "/sales/salesdashboard", icon: <FaChartLine />, label: "Dashboard" },
+          // { to: "/sales/salescalander", icon: <FaChartLine />, label: "Calandar" },
+       
+          // { to: "/sales/sharespace", icon: <FaChartLine />, label: "Share Space" },
+          { to: "/sales/salesdashboard", icon: <FaTachometerAlt />, label: "Dashboard" }, 
+{ to: "/sales/salescalander", icon: <FaCalendarAlt />, label: "Calendar" }, 
+{ to: "/sales/sharespace", icon: <FaPeopleArrows />, label: "Share Space" } 
+
+        ]}
       />
 
       <SidebarDropdown
@@ -362,15 +379,6 @@ const Dashboard = () => {
     </div>
   </div>
 
-  {/* Main Content */}
-  {/* <div
-    className="flex-grow-1 p-3 "
-    style={{
-      paddingLeft: collapsed ? '80px' : '250px',  
-      transition: 'padding-left 0.3s',  
-
-    }}
-  > */}
   <div
   className="main-content flex-grow-1 p-3"
   style={{

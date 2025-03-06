@@ -173,7 +173,8 @@ const [isCollapsed, setIsCollapsed] = useState(false);
       <TableContainer component={Paper} className="mt-4" sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table>
           <TableHead>
-            <TableRow sx={{ bgcolor: "primary.main" }}>
+            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+                    <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>SLAB</TableCell>

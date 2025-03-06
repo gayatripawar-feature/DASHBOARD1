@@ -69,14 +69,31 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
     }
   };
 
+  
   const handleResetFilters = () => {
     setFilterType('');
     setFilterValue('');
   };
 
+  const resetFilters = () => {
+    setFilterType('');
+    setFilterValue('');
+    setStartDate('');
+    setEndDate('');
+  };
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredLoans.slice(indexOfFirstRow, indexOfLastRow);
+
+
+  // / Handle Rows per page change
+const handleRowsPerPageChange = (e) => {
+  const value = parseInt(e.target.value, 10);
+  if (!isNaN(value) && value > 0) {
+    setRowsPerPage(value);
+  }
+};
+
 
   const getFilterOptions = (type) => {
     switch (type) {
@@ -115,12 +132,35 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
       </div>
 
 
-      <div className="d-flex align-items-center justify-content-between my-3 pt-4 pb-3">
+      {/* <div className="d-flex align-items-center justify-content-between my-3 pt-4 pb-3">
         <Button variant="contained" className="text-nowrap" style={{ minWidth: "180px" }} color="primary" onClick={() => handleOpenModal(null)}>
           Demand Letter
         </Button>
 
-       
+       <div className="d-flex align-items-center">
+                      <label style={{ marginRight: '5px' }}>Start Date:</label>
+                      <TextField
+                        type="date"
+                        variant="outlined"
+                        size="small"
+                        style={{ width: '150px', textAlign: 'center' }}
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                      />
+                    </div>
+                
+                  
+                    <div className="d-flex align-items-center">
+                      <label style={{ marginRight: '5px' }}>End Date:</label>
+                      <TextField
+                        type="date"
+                        variant="outlined"
+                        size="small"
+                        style={{ width: '150px', textAlign: 'center' }}
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                      />
+                    </div>
         
 
         <div className="d-flex align-items-center gap-2 ">
@@ -129,10 +169,10 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
     <InputLabel>Filter By</InputLabel>
     <Select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
       <MenuItem value="Flat Type">Flat Type</MenuItem>
-      {/* <MenuItem value="Parking">Parking</MenuItem> */}
+    
       <MenuItem value="Floor">Floor</MenuItem>
       <MenuItem value="Rate">Rate</MenuItem>
-      {/* <MenuItem value="Slab">Slab</MenuItem> */}
+    
     </Select>
   </FormControl>
 
@@ -150,12 +190,12 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
     </Select>
   </FormControl>
 
-  {/* Reset Button */}
+  
   <Button className="text-white" style ={{backgroundColor:"#800080",padding: '10px 15px', borderRadius: '5px' }} variant="outlined" color="secondary" onClick={handleResetFilters}>
     Reset
   </Button>
 
-  {/* Rows per page */}
+ 
   <div className="d-flex align-items-center gap-1">
     <label className="fw-bold">Rows per page:</label>
     <input
@@ -168,12 +208,119 @@ const [selectedTitle, setSelectedTitle] = useState("Mr.");
   </div>
 </div>
 
-      </div>
+      </div> */}
+
+<div className="d-flex align-items-center justify-content-between my-3 pt-4 pb-3">
+  <Button variant="contained" className="text-nowrap" style={{ minWidth: "150px" }} color="primary" onClick={() => handleOpenModal(null)}>
+    Demand Letter
+  </Button>
+
+  <div className="d-flex align-items-center justify-content-between mb-3 m-3">
+           <div className="d-flex align-items-center gap-3">
+             <label>Filter By:</label>
+             <TextField
+               select
+               variant="outlined"
+               size="small"
+               style={{ width: '150px' }}
+               value={filterType}
+               className="bg-white"
+               onChange={(e) => {
+                 setFilterType(e.target.value);
+                 setFilterValue('');
+               }}
+             >
+               <MenuItem value="">Select Filter</MenuItem>
+               <MenuItem value="Flat Type">Flat Type</MenuItem>
+               <MenuItem value="Parking">Parking</MenuItem>
+               <MenuItem value="Floor">Floor</MenuItem>
+               <MenuItem value="Rate">Rate</MenuItem>
+             </TextField>
+         
+             
+         
+           {filterType && (
+             <div className="d-flex align-items-center gap-1">
+               <label>{filterType}:</label>
+               <TextField
+                 select
+                 variant="outlined"
+                 size="small"
+                 className="bg-white"
+                 style={{ width: '150px'  }}
+                 value={filterValue}
+                 onChange={(e) => setFilterValue(e.target.value)}
+               >
+                 {getFilterOptions(filterType).map((option) => (
+                   <MenuItem key={option} value={option}>
+                     {option}
+                   </MenuItem>
+                 ))}
+               </TextField>
+         
+               {/* Reset Button */}
+               <Button
+                 variant="contained"
+                 color="secondary"
+                 style={{ marginLeft: '10px' }}
+                 onClick={resetFilters}
+               >
+                 Reset
+               </Button>
+             </div>
+           )}
+         
+         {/* Start Date */}
+         <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>Start Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={startDate}
+                 onChange={(e) => setStartDate(e.target.value)}
+               />
+             </div>
+         
+             {/* End Date */}
+             <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>End Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={endDate}
+                 onChange={(e) => setEndDate(e.target.value)}
+               />
+             </div>
+           </div>
+
+           
+           {/* Rows per page */}
+           <div className="d-flex align-items-center gap-3">
+             <label className="me-2">Rows per page:</label>
+             <input
+               type="number"
+               className="form-control"
+               value={rowsPerPage}
+               onChange={handleRowsPerPageChange}
+               style={{ width: '80px' }}
+             />
+           </div>
+         </div>
+             
+
+
+</div>
+
 
       <TableContainer component={Paper} className="mt-4" sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table>
           <TableHead>
-            <TableRow sx={{ bgcolor: "primary.main" }}>
+            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+                    <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>
               FLAT NO.</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF ALLOTEE</TableCell>

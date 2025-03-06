@@ -111,27 +111,28 @@ const Salesmis = () => {
         <TableContainer component={Paper} className="pt-2">
     <Table>
         <TableHead>
-            <TableRow sx={{ bgcolor: "primary.main" }}>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>PROJECT NAME</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>WING</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FLAT NO.</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>RERA CARPET AREA (SQ MTR)</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>RERA CARPET AREA (SQ FT)</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>TOTAL SALEABLE AREA (SQ. FTS)</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>SALEABLE TO CARPET AREA RATIO (SQ. FTS)</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>TYPE OF UNITS (RESIDENTIAL / COMMERCIAL)</TableCell>
-                <TableCell  sx={{ color: "white", fontWeight: "bold" }}>CONFIG ( 2 BHK, 3 BHK, 4 BHK)</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>STATUS</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>CHOOSE OWNER</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>SOLD/UNSOLD</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF THE BUYER</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF BOOKING</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>AGREEMENT VALUE</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>AMOUNT RECEIVED</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>BALANCE</TableCell>
-                <TableCell sx={{ color: "white", fontWeight: "bold" }}>% COLLECTIONS</TableCell>
+            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+            <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+                <TableCell  sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>TIMESTAMP</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>PROJECT NAME</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>WING</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>FLOOR</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>FLAT NO.</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>RERA CARPET AREA (SQ MTR)</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>RERA CARPET AREA (SQ FT)</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>TOTAL SALEABLE AREA (SQ. FTS)</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>SALEABLE TO CARPET AREA RATIO (SQ. FTS)</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>TYPE OF UNITS (RESIDENTIAL / COMMERCIAL)</TableCell>
+                <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>CONFIG ( 2 BHK, 3 BHK, 4 BHK)</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>STATUS</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>CHOOSE OWNER</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>SOLD/UNSOLD</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>NAME OF THE BUYER</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>DATE OF BOOKING</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>AGREEMENT VALUE</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>AMOUNT RECEIVED</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>BALANCE</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>% COLLECTIONS</TableCell>
             </TableRow>
         </TableHead>
     </Table>

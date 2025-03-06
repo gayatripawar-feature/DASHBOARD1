@@ -6,7 +6,8 @@ const LandownerTable = ({ data }) => {
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
-          <TableRow sx={{ bgcolor: "primary.main" }}>
+          {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+          <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
           <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
 <TableCell sx={{ color: "white", fontWeight: "bold" }} >TIMESTAMP</TableCell>
 <TableCell sx={{ color: "white", fontWeight: "bold" }}>PROJECT NAME</TableCell>

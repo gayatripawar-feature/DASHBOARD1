@@ -191,42 +191,42 @@ const Agreement = () => {
           <TableHead>
          
  
-          <TableRow sx={{ bgcolor: "primary.main" }}>
+          {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
 
-
+      <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
             
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Flat No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Allotee Date Of Birth</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Allotee Age</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>A1-Occupation</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>A1-Pan No</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>A1-Aadhar No</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name of Co-Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Co-Allotee Date Of Birth</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Co-Allotee Age</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Co-Occupation</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Co-Pan No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Co-Aadhar No .</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Address</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Contact</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Floor</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Total Agreement Value (In words)</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Payment Schedule</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Execution Of Aggrement</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of Plinth</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 1st Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 2nd Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 3rd Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 5th Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 7th Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 9th Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of 10th Slab</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of Walls</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of Internal Plaster</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Completion Of Lifts</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Possession</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Flat No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Name Of Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Allotee Date Of Birth</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Allotee Age</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>A1-Occupation</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>A1-Pan No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>A1-Aadhar No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Name of Co-Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Co-Allotee Date Of Birth</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Co-Allotee Age</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Co-Occupation</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Co-Pan No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Co-Aadhar No .</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Address</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Contact</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Floor</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Total Agreement Value (In words)</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Payment Schedule</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Booking</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Execution Of Aggrement</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of Plinth</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 1st Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 2nd Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 3rd Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 5th Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 7th Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 9th Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of 10th Slab</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of Walls</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of Internal Plaster</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Completion Of Lifts</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Possession</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

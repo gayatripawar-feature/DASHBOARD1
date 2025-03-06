@@ -74,28 +74,29 @@ const InventoryTable = ({ inventoryData, handleDelete }) => {
     <TableContainer component={Paper} sx={{ mt: 3 }}>
       <Table>
         <TableHead>
-          <TableRow sx={{ bgcolor: "primary.main" }}>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PROJECT NAME</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>WING</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLAT NO.</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>RERA CARPET AREA (Sq Mtr)</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>RERA CARPET AREA (Sq Ft)</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>TOTAL SALEABLE AREA (Sq. Fts)</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>SALEABLE RATIO</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>UNIT TYPE</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>CONFIGURATION</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>STATUS</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>OWNERSHIP</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>ATT. TERRACE CARPET AREA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>BALCONY AREA/SITOUT CARPET AREA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PORCH AREA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>TOP TERRACE CARPET AREA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>SUPER BUILTUP AREA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>OPEN/ENCLOSED BALCONY AS SANCTIONED</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PODIUM GARDE</TableCell>
+          {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+          <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>ACTION</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TIMESTAMP</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>PROJECT NAME</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>WING</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FLOOR</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FLAT NO.</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>RERA CARPET AREA (Sq Mtr)</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>RERA CARPET AREA (Sq Ft)</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TOTAL SALEABLE AREA (Sq. Fts)</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>SALEABLE RATIO</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>UNIT TYPE</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>CONFIGURATION</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>STATUS</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>OWNERSHIP</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ATT. TERRACE CARPET AREA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>BALCONY AREA/SITOUT CARPET AREA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PORCH AREA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TOP TERRACE CARPET AREA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>SUPER BUILTUP AREA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>OPEN/ENCLOSED BALCONY AS SANCTIONED</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PODIUM GARDE</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

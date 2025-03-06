@@ -7,27 +7,28 @@ const FlatAllotment = ({ data }) => {
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
-          <TableRow sx={{ bgcolor: "primary.main" }}>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PROJECT NAME</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>LANDOWNER NAME</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>AGE</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCCUPATION</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>MOBILE NO</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>MAIL ID</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>VILLAGE</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>TALUKA</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>DISTRICT</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>RESIDENTIAL ADDRESS</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PAN NO</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>ADDHAAR</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>PHOTO</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>LIGHT BILL</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF BANK</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>BANK ADDRESS</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>ACCOUNT NO</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>IFSC CODE</TableCell>
+          {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+          <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ACTION</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TIMESTAMP</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>PROJECT NAME</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>LANDOWNER NAME</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>AGE</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>OCCUPATION</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>MOBILE NO</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>MAIL ID</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>VILLAGE</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TALUKA</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>DISTRICT</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>RESIDENTIAL ADDRESS</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PAN NO</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ADDHAAR</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PHOTO</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>LIGHT BILL</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>NAME OF BANK</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>BANK ADDRESS</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ACCOUNT NO</TableCell>
+            <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>IFSC CODE</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

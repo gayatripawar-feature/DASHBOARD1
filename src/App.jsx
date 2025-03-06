@@ -20,6 +20,10 @@ import ProjectInventory from './Components/ProjectInventory';
 import CostSheet from './Components/CostSheet';
 import Salesmis from './Components/Salesmis';
 import Marketing from './Components/Marketing';
+import { Calendar } from 'lucide-react';
+import SalesCalendar from "./Components/SalesCalendar";
+import SalesDashboard from "./Components/SalesDashboard";
+import SalesSharespace from "./Components/SalesSharespace";
 
 const App = () => {
   return (
@@ -37,6 +41,9 @@ const App = () => {
         <Route path="/developer/marketing" element={<Marketing/>}/>
         
         <Route path="/sales/lostvisits"  element={<LostVisitsModule />} />
+        <Route path ="/sales/salesdashboard" element={< SalesDashboard/>} />
+        <Route path ="/sales/salescalander" element={< SalesCalendar/>} />
+        <Route path ="/sales/sharespace" element={< SalesSharespace/>} />
          
         
            <Route path="crm/CRM" element={<CRM/>} /> 

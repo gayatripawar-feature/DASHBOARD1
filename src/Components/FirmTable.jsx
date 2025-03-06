@@ -6,28 +6,29 @@ const FirmTable = ({ firms }) => {
     <TableContainer component={Paper}>
     <Table>
       <TableHead>
-        <TableRow sx={{ bgcolor: "primary.main" }}>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>ACTION</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM NAME</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM ADDRESS</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM PAN NO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM GST NO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM PAN</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM GST</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>FIRM LIGHT BILL</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>PARTNER </TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>ADDHAAR NO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>NAME</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>AGE</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>OCCUPATION</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>MOBILE NO.</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>MAIL ID</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>RESIDENTIAL ADDRESS</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>PAN NO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>AADHAAR NO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>PHOTO</TableCell>
-          <TableCell  sx={{ color: "white", fontWeight: "bold" }}>LIGHT BILL</TableCell>
+        {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+        <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+          <TableCell  sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>ACTION</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TIMESTAMP</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>FIRM NAME</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM ADDRESS</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM PAN NO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM GST NO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM PAN</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM GST</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>FIRM LIGHT BILL</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PARTNER </TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ADDHAAR NO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>NAME</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>AGE</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>OCCUPATION</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>MOBILE NO.</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>MAIL ID</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>RESIDENTIAL ADDRESS</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PAN NO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>AADHAAR NO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>PHOTO</TableCell>
+          <TableCell  sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>LIGHT BILL</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

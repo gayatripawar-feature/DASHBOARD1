@@ -195,7 +195,7 @@ const OCR = () => {
       </div>
 
       {/* Filter, Reset, Rows per page in one line */}
-      <div className="d-flex align-items-center justify-content-between mb-3">
+      {/* <div className="d-flex align-items-center justify-content-between mb-3">
         <div className="d-flex align-items-center gap-3">
           <label>Filter By:</label>
           <TextField
@@ -217,7 +217,7 @@ const OCR = () => {
             <MenuItem value="Rate">Rate</MenuItem>
           </TextField>
 
-          {/* Filter Value */}
+         
           {filterType && (
             <>
               <label>{filterType}:</label>
@@ -237,7 +237,7 @@ const OCR = () => {
                 ))}
               </TextField>
 
-              {/* Reset Button */}
+        
               <Button
                 variant="contained"
                 color="secondary"
@@ -262,47 +262,150 @@ const OCR = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+         
+         
+         <div className="d-flex align-items-center justify-content-between mb-3">
+           <div className="d-flex align-items-center gap-3">
+             <label>Filter By:</label>
+             <TextField
+               select
+               variant="outlined"
+               size="small"
+               style={{ width: '150px' }}
+               value={filterType}
+               className="bg-white"
+               onChange={(e) => {
+                 setFilterType(e.target.value);
+                 setFilterValue('');
+               }}
+             >
+               <MenuItem value="">Select Filter</MenuItem>
+               <MenuItem value="Flat Type">Flat Type</MenuItem>
+               <MenuItem value="Parking">Parking</MenuItem>
+               <MenuItem value="Floor">Floor</MenuItem>
+               <MenuItem value="Rate">Rate</MenuItem>
+             </TextField>
+         
+             
+         
+           {filterType && (
+             <div className="d-flex align-items-center gap-3">
+               <label>{filterType}:</label>
+               <TextField
+                 select
+                 variant="outlined"
+                 size="small"
+                 className="bg-white"
+                 style={{ width: '150px' }}
+                 value={filterValue}
+                 onChange={(e) => setFilterValue(e.target.value)}
+               >
+                 {getFilterOptions(filterType).map((option) => (
+                   <MenuItem key={option} value={option}>
+                     {option}
+                   </MenuItem>
+                 ))}
+               </TextField>
+         
+               {/* Reset Button */}
+               <Button
+                 variant="contained"
+                 color="secondary"
+                 style={{ marginLeft: '10px' }}
+                 onClick={resetFilters}
+               >
+                 Reset
+               </Button>
+             </div>
+           )}
+         
+         {/* Start Date */}
+         <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>Start Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={startDate}
+                 onChange={(e) => setStartDate(e.target.value)}
+               />
+             </div>
+         
+             {/* End Date */}
+             <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>End Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={endDate}
+                 onChange={(e) => setEndDate(e.target.value)}
+               />
+             </div>
+           </div>
+
+
+           {/* Rows per page */}
+           <div className="d-flex align-items-center gap-3">
+             <label className="me-2">Rows per page:</label>
+             <input
+               type="number"
+               className="form-control"
+               value={rowsPerPage}
+               onChange={handleRowsPerPageChange}
+               style={{ width: '80px' }}
+             />
+           </div>
+         </div>
+             
+
+
 
       {/* Table Section */}
       <TableContainer component={Paper}  sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table style={{ tableLayout: 'auto', width: '100%' }}>
           <TableHead>
-            <TableRow sx={{ bgcolor: "primary.main" }}>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Flat No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Co-Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Type</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Floor</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Email</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Whatsapp No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Rate</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Agreement Value</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Date</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Parking</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Parking No</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Status</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCR Amount</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCR Received</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>OCR Balance</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Online</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Cash With AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>History Cash With AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Balance Cash With AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Cash Without AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>History Cash Without AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Balance Cash Without AV</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Received As Per Stage</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Stamp Duty Total</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Stamp Duty Received</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Stamp Duty Balance</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Reg Total</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Reg Received</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Reg Balance</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>GST Total</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>GST Received</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Balance GST</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Legal Charges Received</TableCell>
+            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+                  <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Flat No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Name Of Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Name Of Co-Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Type</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Floor</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Email</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Whatsapp No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Rate</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Agreement Value</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Booking Date</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Parking</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Parking No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Loan Status</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>OCR Amount</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>OCR Received</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>OCR Balance</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Online</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Cash With AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>History Cash With AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Balance Cash With AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Cash Without AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>History Cash Without AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Balance Cash Without AV</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Received As Per Stage</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Stamp Duty Total</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>Stamp Duty Received</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Stamp Duty Balance</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Reg Total</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Reg Received</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Reg Balance</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>GST Total</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>GST Received</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Balance GST</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>Legal Charges Received</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{displayLoans()}</TableBody>

@@ -185,13 +185,13 @@ const Registration = () => {
   
 
       <TableRow >
-  <TableCell>{loan.flatNo}</TableCell>
-  <TableCell>{loan.nameOfAllotee}</TableCell>
-  <TableCell>{loan.nameOfCoAllotee}</TableCell>
-  <TableCell>{loan.type}</TableCell>
-  <TableCell>{loan.floor}</TableCell>
-  <TableCell>{loan.emailId}</TableCell>
-  <TableCell>{loan.whatsappMobileNo}</TableCell>
+  <TableCell >{loan.flatNo}</TableCell>
+  <TableCell >{loan.nameOfAllotee}</TableCell>
+  <TableCell >{loan.nameOfCoAllotee}</TableCell>
+  <TableCell >{loan.type}</TableCell>
+  <TableCell >{loan.floor}</TableCell>
+  <TableCell >{loan.emailId}</TableCell>
+  <TableCell >{loan.whatsappMobileNo}</TableCell>
   <TableCell>{loan.rate}</TableCell>
   <TableCell>{loan.agreementValue}</TableCell>
   <TableCell>{loan.dateOfBooking}</TableCell>
@@ -233,125 +233,131 @@ const Registration = () => {
         </Button>
       </div>
 
-      {/* Filter, Reset, Rows per page in one line */}
-      <div className="d-flex align-items-center justify-content-between mb-3">
-        <div className="d-flex align-items-center gap-3">
-          <label>Filter By:</label>
-          <TextField
-            select
-            variant="outlined"
-            size="small"
-            style={{ width: '150px' }}
-            value={filterType}
-            className="bg-white"
-            onChange={(e) => {
-              setFilterType(e.target.value);
-              setFilterValue('');
-            }}
-          >
-            <MenuItem value="">Select Filter</MenuItem>
-            <MenuItem value="Flat Type">Flat Type</MenuItem>
-            <MenuItem value="Parking">Parking</MenuItem>
-            <MenuItem value="Floor">Floor</MenuItem>
-            <MenuItem value="Rate">Rate</MenuItem>
-          </TextField>
-  </div>
-  {/* Date Filters (Start Date and End Date) */}
-  <div className="d-flex gap-3">
-          <div>
-            <label>Start Date:</label>
-            <TextField
-              type="date"
-              variant="outlined"
-              size="small"
-              style={{ width: '150px' }}
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>End Date:</label>
-            <TextField
-              type="date"
-              variant="outlined"
-              size="small"
-              style={{ width: '150px' }}
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
+   
 
 
-            </div>
-          {/* Filter Value */}
-          {filterType && (
-            <>
-              <label>{filterType}:</label>
-              <TextField
-                select
-                variant="outlined"
-                size="small"
-                className="bg-white"
-                style={{ width: '150px' }}
-                value={filterValue}
-                onChange={(e) => setFilterValue(e.target.value)}
-              >
-                {getFilterOptions(filterType).map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </TextField>
+
+
+
+<div className="d-flex align-items-center justify-content-between mb-3">
+  <div className="d-flex align-items-center gap-3">
+    <label>Filter By:</label>
+    <TextField
+      select
+      variant="outlined"
+      size="small"
+      style={{ width: '150px' }}
+      value={filterType}
+      className="bg-white"
+      onChange={(e) => {
+        setFilterType(e.target.value);
+        setFilterValue('');
+      }}
+    >
+      <MenuItem value="">Select Filter</MenuItem>
+      <MenuItem value="Flat Type">Flat Type</MenuItem>
+      <MenuItem value="Parking">Parking</MenuItem>
+      <MenuItem value="Floor">Floor</MenuItem>
+      <MenuItem value="Rate">Rate</MenuItem>
+    </TextField>
+
+    {/* Start Date */}
  
-              {/* Reset Button */}
-              <Button
-                variant="contained"
-                color="secondary"
-                style={{ marginLeft: '10px' }}
-                onClick={resetFilters}
-              >
-                Reset
-              </Button>
-            </>
-          )}
-        </div>
+  {/* </div> */}
 
-        <div className="d-flex align-items-center gap-3">
-          <div className="d-flex align-items-center">
-            <label className="me-2">Rows per page:</label>
-            <input
-              type="number"
-              className="form-control"
-              value={rowsPerPage}
-              onChange={handleRowsPerPageChange}
-              style={{ width: '80px' }}
-            />
-          </div>
-        </div>
-      </div>
+  {filterType && (
+    <div className="d-flex align-items-center gap-3">
+      <label>{filterType}:</label>
+      <TextField
+        select
+        variant="outlined"
+        size="small"
+        className="bg-white"
+        style={{ width: '150px' }}
+        value={filterValue}
+        onChange={(e) => setFilterValue(e.target.value)}
+      >
+        {getFilterOptions(filterType).map((option) => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </TextField>
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ marginLeft: '10px' }}
+        onClick={resetFilters}
+      >
+        Reset
+      </Button>
+    </div>
+  )}
 
+  
+   <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>Start Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={startDate}
+                 onChange={(e) => setStartDate(e.target.value)}
+               />
+             </div>
+         
+             {/* End Date */}
+             <div className="d-flex align-items-center">
+               <label style={{ marginRight: '5px' }}>End Date:</label>
+               <TextField
+                 type="date"
+                 variant="outlined"
+                 size="small"
+                 style={{ width: '150px', textAlign: 'center' }}
+                 value={endDate}
+                 onChange={(e) => setEndDate(e.target.value)}
+               />
+             </div>
+             {/* </div> */}
 
+  {/* Rows per page */}
+  <div className="d-flex align-items-center gap-3">
+    <label className="me-2">Rows per page:</label>
+    <input
+      type="number"
+      className="form-control"
+      value={rowsPerPage}
+      onChange={handleRowsPerPageChange}
+      style={{ width: '80px' }}
+    />
+  </div>
+</div>
+
+</div>
 
 
 <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
   <Table sx={{ tableLayout: 'auto', width: '100%' }}>
     <TableHead >
-      <TableRow sx={{ bgcolor: "primary.main" }}>
-        {/* Updated Table Headers */}
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLAT NO.</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF ALLOTEE</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>NAME OF CO-ALLOTEE</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>TYPE</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>FLOOR</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>EMAIL ID</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>WHATSAPP MOBILE NO.</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>RATE</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>AGREEMENT VALUE</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DATE OF BOOKING</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>PARKING</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>REGISTRATION NUMBER</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>CHECKLIST OF DOCUMENT COLLECTION (AFTER AGREEMENT)</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>UPLOAD INDEX 2</TableCell>
-        <TableCell sx={{ color: "white", fontWeight: "bold" }}>DOCUMENT HANDOVER</TableCell>
+      {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+      <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
+
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"}}>FLAT NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>NAME OF ALLOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>NAME OF CO-ALLOTEE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>TYPE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>FLOOR</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>EMAIL ID</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>WHATSAPP MOBILE NO.</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>RATE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>AGREEMENT VALUE</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>DATE OF BOOKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>PARKING</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>REGISTRATION NUMBER</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>CHECKLIST OF DOCUMENT COLLECTION (AFTER AGREEMENT)</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap" }}>UPLOAD INDEX 2</TableCell>
+        <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"}}>DOCUMENT HANDOVER</TableCell>
       </TableRow>
     </TableHead>
 
@@ -359,16 +365,15 @@ const Registration = () => {
       {displayLoans()}
     </TableBody>
   </Table>
-</TableContainer>
+</TableContainer> 
 
 
-      {/* Pagination Section */}
-      <div className="d-flex justify-content-between align-items-center">
-        <Button style={{backgroundColor:"#800080"}} className="text-white mt-3" onClick={handlePagination} disabled={currentPage === 1}>Previous</Button>
-        <Button style={{backgroundColor:"#800080"}} className='text-white mt-3' onClick={handlePagination} disabled={currentPage === totalPages}>Next</Button>
-      </div>
-    </div>
- 
+
+
+
+  
+{/* </div> */}
+</div>
   );
 };
 

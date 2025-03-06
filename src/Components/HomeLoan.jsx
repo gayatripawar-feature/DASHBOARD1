@@ -224,9 +224,38 @@ const HomeLoan = () => {
               >
                 Reset
               </Button>
+                 
+                    
             </>
           )}
         </div>
+    {/* Start Date */}
+    <div className="d-flex align-items-center">
+                             <label style={{ marginRight: '5px' }}>Start Date:</label>
+                             <TextField
+                               type="date"
+                               variant="outlined"
+                               size="small"
+                               style={{ width: '150px', textAlign: 'center' }}
+                               value={startDate}
+                               onChange={(e) => setStartDate(e.target.value)}
+                             />
+                           </div>
+                       
+                           {/* End Date */}
+                           <div className="d-flex align-items-center">
+                             <label style={{ marginRight: '5px' }}>End Date:</label>
+                             <TextField
+                               type="date"
+                               variant="outlined"
+                               size="small"
+                               style={{ width: '150px', textAlign: 'center' }}
+                               value={endDate}
+                               onChange={(e) => setEndDate(e.target.value)}
+                             />
+                           </div>
+
+
 
         <div className="d-flex align-items-center gap-3">
           <div className="d-flex align-items-center">
@@ -246,29 +275,30 @@ const HomeLoan = () => {
       <TableContainer component={Paper}  sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table style={{ tableLayout: 'auto', width: '100%' }}>
           <TableHead>
-            <TableRow sx={{ bgcolor: "primary.main" }}>
+            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+                  <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
               {/* Table Headers */}
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Flat No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name Of Co-Allotee</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Type</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Floor</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Email</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Whatsapp No.</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Rate</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Agreement Value</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Date</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Parking</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Home Loan Applicability</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Bank Name</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Banker Name</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Mobile No</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Acc No</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Amount</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Sanction Letter</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Cert</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Cancellation Reason</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Booking Confirmation Mail</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Flat No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"  }}>Name Of Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Name Of Co-Allotee</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Type</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold",whiteSpace: "nowrap"  }}>Floor</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Email</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Whatsapp No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Rate</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Agreement Value</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Booking Date</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Parking</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Home Loan Applicability</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Bank Name</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Banker Name</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Mobile No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Loan Acc No</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Loan Amount</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Sanction Letter</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Loan Cert</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Booking Cancellation Reason</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Booking Confirmation Mail</TableCell>
             </TableRow>
           </TableHead>
 

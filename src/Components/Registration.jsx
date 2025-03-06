@@ -255,7 +255,7 @@ const Registration = () => {
             <MenuItem value="Floor">Floor</MenuItem>
             <MenuItem value="Rate">Rate</MenuItem>
           </TextField>
-  
+  </div>
   {/* Date Filters (Start Date and End Date) */}
   <div className="d-flex gap-3">
           <div>
@@ -368,7 +368,7 @@ const Registration = () => {
         <Button style={{backgroundColor:"#800080"}} className='text-white mt-3' onClick={handlePagination} disabled={currentPage === totalPages}>Next</Button>
       </div>
     </div>
-    </div>
+ 
   );
 };
 

@@ -255,7 +255,33 @@ const Registration = () => {
             <MenuItem value="Floor">Floor</MenuItem>
             <MenuItem value="Rate">Rate</MenuItem>
           </TextField>
+  
+  {/* Date Filters (Start Date and End Date) */}
+  <div className="d-flex gap-3">
+          <div>
+            <label>Start Date:</label>
+            <TextField
+              type="date"
+              variant="outlined"
+              size="small"
+              style={{ width: '150px' }}
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>End Date:</label>
+            <TextField
+              type="date"
+              variant="outlined"
+              size="small"
+              style={{ width: '150px' }}
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
 
+
+            </div>
           {/* Filter Value */}
           {filterType && (
             <>
@@ -275,7 +301,7 @@ const Registration = () => {
                   </MenuItem>
                 ))}
               </TextField>
-
+ 
               {/* Reset Button */}
               <Button
                 variant="contained"
@@ -341,6 +367,7 @@ const Registration = () => {
         <Button style={{backgroundColor:"#800080"}} className="text-white mt-3" onClick={handlePagination} disabled={currentPage === 1}>Previous</Button>
         <Button style={{backgroundColor:"#800080"}} className='text-white mt-3' onClick={handlePagination} disabled={currentPage === totalPages}>Next</Button>
       </div>
+    </div>
     </div>
   );
 };

@@ -250,23 +250,23 @@ const Agreement = () => {
 
 
 
-
+{/* 
 <div
       className={`modal ${openModal ? "show" : ""}`}
       style={{ display: openModal ? "block" : "none" }}
     >
       <div className="modal-dialog modal-lg">
         <div className="modal-content">
-          {/* Modal Header */}
+        
           <div className="modal-header">
             <h5 className="modal-title">Agreement Draft Generation</h5>
             <button type="button" className="btn-close" onClick={handleCloseModal}></button>
           </div>
 
-          {/* Modal Body */}
+        
           <div className="modal-body">
             <div className="container">
-              {/* First Row */}
+             
               <div className="row mb-3">
                 <div className="col-md-4">
                   <label>Date</label>
@@ -282,7 +282,7 @@ const Agreement = () => {
                 </div>
               </div>
 
-              {/* Second Row */}
+             
               <div className="row mb-3">
                 <div className="col-md-4">
                   <label>Allotee DOB</label>
@@ -298,7 +298,7 @@ const Agreement = () => {
                 </div>
               </div>
 
-              {/* Co-Allotee Section */}
+              
               <h6 className="mt-3">Co-Allotee Details</h6>
               <div className="row mb-3">
                 <div className="col-md-2">
@@ -330,7 +330,7 @@ const Agreement = () => {
                 </div>
               </div>
 
-              {/* Address & Contact */}
+             
               <div className="row mb-3">
                 <div className="col-md-6">
                   <label>Address</label>
@@ -342,7 +342,7 @@ const Agreement = () => {
                 </div>
               </div>
 
-              {/* Payment Schedule */}
+              
               <h6 className="mt-3">Payment Schedule</h6>
               <div className="row mb-3">
                 <div className="col-md-4">
@@ -419,7 +419,7 @@ const Agreement = () => {
             </div>
           </div>
 
-          {/* Modal Footer */}
+        
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
               Close
@@ -428,7 +428,192 @@ const Agreement = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
+
+{openModal && (
+        <div
+          className="modal"
+          style={{
+            display: openModal ? 'block' : 'none',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark overlay behind the modal
+            zIndex: 9999,
+          }}
+        >
+          <div
+            className="modal-dialog modal-lg"
+            style={{
+              position: 'relative',
+              margin: 'auto',
+              top: '50%',
+              transform: 'translateY(-50%)', // Centers the modal vertically
+            }}
+          >
+            <div className="modal-content">
+              {/* Modal Header */}
+              <div className="modal-header">
+                <h5 className="modal-title">Agreement Draft Generation</h5>
+                <button type="button" className="btn-close" onClick={handleCloseModal}></button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="modal-body">
+                <div className="container">
+                  {/* First Row */}
+                  <div className="row mb-3">
+                    <div className="col-md-4">
+                      <label>Date</label>
+                      <input type="date" className="form-control" readOnly />
+                    </div>
+                    <div className="col-md-4">
+                      <label>Flat No</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.flatNo || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-4">
+                      <label>Allotee Name</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.nameOfAllotee || ''}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  {/* Second Row */}
+                  <div className="row mb-3">
+                    <div className="col-md-4">
+                      <label>Allotee DOB</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.alloteeDOB || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-4">
+                      <label>Allotee Age</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.alloteeAge || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-4">
+                      <label>A1 Occupation</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.a1Occupation || ''}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  {/* Co-Allotee Section */}
+                  <h6 className="mt-3">Co-Allotee Details</h6>
+                  <div className="row mb-3">
+                    <div className="col-md-2">
+                      <label>Title</label>
+                      <select className="form-select" readOnly>
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                        <option>Miss</option>
+                      </select>
+                    </div>
+                    <div className="col-md-10">
+                      <label>Co-Allotee Name</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.coAlloteeName || ''}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  {/* Address & Contact */}
+                  <div className="row mb-3">
+                    <div className="col-md-6">
+                      <label>Address</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.address || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <label>Contact</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.contact || ''}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  {/* Payment Schedule */}
+                  <h6 className="mt-3">Payment Schedule</h6>
+                  <div className="row mb-3">
+                    <div className="col-md-4">
+                      <label>Booking</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.agreementValueInWords || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-4">
+                      <label>Execution Of Agreement</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.agreementValueInWords || ''}
+                        readOnly
+                      />
+                    </div>
+                    <div className="col-md-4">
+                      <label>Completion Of Plinth</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={selectedLoan?.agreementValueInWords || ''}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  {/* Additional rows here... */}
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Generate PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
 
     </div>
   );

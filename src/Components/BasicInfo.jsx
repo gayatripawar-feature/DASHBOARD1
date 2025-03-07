@@ -1,13 +1,13 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,Box,Tabs, Tab, Button, TextField, Grid } from '@mui/material';
-import { FaEye, FaBuilding, FaFileDownload, FaPlus, FaTrash } from "react-icons/fa";
+import {Input, Table, TableBody, TableCell, TableContainer, Typography,IconButton,TableHead, TableRow, Paper,Box,Tabs, Tab, Button, TextField, Grid } from '@mui/material';
+import { FaEye, FaBuilding, FaFileDownload, FaPlus, FaTrash,FaUpload } from "react-icons/fa";
 import FirmTable from './FirmTable';
 import DisplayTable from "./DisplayTable";
 import LandownerTable from "./LandownerTable";
 import FlatAllotment from './FlatAllotement';
-
+import { toast } from "react-toastify";
 
 const fetchLoansData = async () => {
   const response = await fetch('/api/getOCRCollection');
@@ -31,7 +31,7 @@ const BasicInfo = () => {
   const [loans, setLoans] = useState([]);
   const [expandedSection, setExpandedSection] = useState(0); // Ensure expandedSection is defined here
   const [showFirmForm, setShowFirmForm] = useState(false);
-  const [partners, setPartners] = useState([]);
+  // const [partners, setPartners] = useState([]);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [phases, setPhases] = useState([]);
   const [showLandownerForm, setShowLandownerForm] = useState(false); 
@@ -42,7 +42,10 @@ const BasicInfo = () => {
   
   const [Flatdata, setFlatdata] = useState([]);
 
-
+  const [partners, setPartners] = useState([
+    { name: "", age: "", occupation: "", mobile: "", email: "", address: "", pan: "", aadhaar: "" }
+  ]);
+  
   useEffect(() => {
     console.log("Updated Selected Tab:", selectedTab);
     loadLoansData();
@@ -204,181 +207,112 @@ const handleTabClick = (index) => {
            </div>
            </>
           ) : (
-            <div className="firm-form mt-4 p-3 border rounded">
-              <h5>Firm Details</h5>
-              <Grid container spacing={2}>
-                <Grid item xs={4}><TextField label="Firm Name" fullWidth /></Grid>
-                <Grid item xs={4}><TextField label="Firm Address" fullWidth /></Grid>
-                <Grid item xs={4}><TextField label="Firm PAN No" fullWidth /></Grid>
-                <Grid item xs={4}><TextField label="Firm GST No" fullWidth /></Grid>
-                <Grid item xs={4}><TextField type="file" /> Firm PAN No Document</Grid>
-                <Grid item xs={4}><TextField type="file" /> Firm GST No Document</Grid>
-              </Grid>
+   
 
-              <h5 className="mt-4">Partner Details</h5>
-              {partners.map((partner, index) => (
-                <Grid container spacing={2} key={index}>
-                  <Grid item xs={4}><TextField label="Name" fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Age" fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Occupation" fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Mobile No." fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Mail ID" fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Residential Address" fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="PAN No." fullWidth /></Grid>
-                  <Grid item xs={4}><TextField label="Aadhaar No." fullWidth /></Grid>
-                  <Grid item xs={4}><Button variant="contained" color="secondary" onClick={() => handleRemovePartner(index)}><FaTrash /></Button></Grid>
+
+
+
+<div className="firm-form mt-4 p-3" style={{ maxHeight: "500px", overflowY: "auto", paddingRight: "10px" }}>
+      <Paper className="p-4" elevation={4} style={{ borderRadius: "12px", paddingBottom: "20px" }}>
+        <Typography variant="h5" gutterBottom>
+          Firm Details
+        </Typography>
+
+        <Grid container spacing={2}>
+          {["Firm Name", "Firm Address", "Firm PAN No", "Firm GST No"].map((label, index) => (
+            <Grid item xs={6} key={index}>
+              <TextField label={label} fullWidth variant="outlined" />
+            </Grid>
+          ))}
+
+          {["Firm PAN No Document", "Firm GST No Document", "Firm Light Bill for Address Proof"].map((label, index) => (
+            <Grid item xs={6} key={index}>
+              <Typography variant="body2" gutterBottom>
+                {label}
+              </Typography>
+              <label>
+                <Input type="file" style={{ display: "none" }} />
+                <IconButton color="primary" component="span">
+                  <FaUpload />
+                </IconButton>
+              </label>
+            </Grid>
+          ))}
+        </Grid>
+
+        <Typography variant="h5" className="mt-4" gutterBottom>
+          Partner Details
+        </Typography>
+
+        {partners.map((partner, index) => (
+          <Paper key={index} className="p-3 mb-3" elevation={2} style={{ borderRadius: "10px" }}>
+            <Grid container spacing={2}>
+              {["Name", "Age", "Occupation", "Mobile No.", "Mail ID", "Residential Address", "PAN No.", "Aadhaar No."].map(
+                (label, i) => (
+                  <Grid item xs={6} key={i}>
+                    <TextField label={label} fullWidth variant="outlined" />
+                  </Grid>
+                )
+              )}
+
+              {[
+                "Residential Address Document",
+                "PAN No Document",
+                "Aadhaar No Document",
+                "Photo Document",
+                "Light Bill for Address Proof",
+              ].map((label, i) => (
+                <Grid item xs={6} key={i}>
+                  <Typography variant="body2" gutterBottom>
+                    {label}
+                  </Typography>
+                  <label>
+                    <Input type="file" style={{ display: "none" }} />
+                    <IconButton color="primary" component="span">
+                      <FaUpload />
+                    </IconButton>
+                  </label>
                 </Grid>
               ))}
 
-              <Button className="m-3" variant="contained" color="primary" onClick={handleAddPartner}>
-                <FaPlus />  Add Partner
-              </Button>
+              {partners.length > 1 && (
+                <Grid item xs={12} className="text-right">
+                  <Button variant="contained" color="error" onClick={() => handleRemovePartner(index)}>
+                    <FaTrash /> Remove Partner
+                  </Button>
+                </Grid>
+              )}
+            </Grid>
+          </Paper>
+        ))}
 
-              <Button className="m-3" variant="contained" color="success" onClick={handleCreateFirm}>
-                Save Firm
-              </Button>
-            </div>
+        <Button className="m-3 m-2" variant="contained" color="primary" onClick={handleAddPartner}>
+          <FaPlus /> Add Partner
+        </Button>
+
+      
+            <Button
+  variant="contained"
+  className="m-3"
+  color="success"
+  onClick={() => {
+    setShowFirmForm(false);
+    toast.success(" details are submitted!", { position: "top-right", autoClose: 3000 });
+  }}
+>
+  Submit
+</Button>
+      </Paper>
+    </div>
           )}
 
 
-          {/* <table>
-            <tr>
-              <th>wd</th>
-              <th>ssd</th>
-            </tr>
-          </table> */}
+         
         </div>
       )}
 
      
-{/* 
- {expandedSection === 1 && (
-  <div className="content-container mt-3">
-    {!showProjectForm ? (
-      <Button variant="contained" color="primary" onClick={() => setShowProjectForm(true)}>
-        + Create Project
-      </Button>
-    ) : (
-      <div className="project-form mt-4 p-3 border rounded">
-        <h5>Project Details</h5>
-        <Grid container spacing={2}>
-          <Grid item xs={4}><TextField label="FIRM Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Project Address" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Old Survey Number" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="New Survey Number" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Village" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Taluka" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="District" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Sanction Authority" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="East" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="West" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="North" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="South" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Latitude" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Longitude" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Landmark" fullWidth /></Grid>
-        </Grid>
 
-        <h5 className="mt-4">Phase Details</h5>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-             
-
-<TableRow>
-        <TableCell>Phase No</TableCell>
-        <TableCell>Wing No</TableCell>
-        <TableCell>Maharera No</TableCell>
-        <TableCell>Action</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell>
-          <TextField fullWidth placeholder="Enter Phase No" value={newPhase.phaseNo} 
-            onChange={(e) => setNewPhase({ ...newPhase, phaseNo: e.target.value })} 
-          />
-        </TableCell>
-        <TableCell>
-          <TextField fullWidth placeholder="Enter Wing No" value={newPhase.wingNo} 
-            onChange={(e) => setNewPhase({ ...newPhase, wingNo: e.target.value })} 
-          />
-        </TableCell>
-        <TableCell>
-          <TextField fullWidth placeholder="Enter Maharera No" value={newPhase.mahareraNo} 
-            onChange={(e) => setNewPhase({ ...newPhase, mahareraNo: e.target.value })} 
-          />
-        </TableCell>
-        <TableCell>
-          <Button variant="contained" color="primary" onClick={handleAddPhase}>
-            Add
-          </Button>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    
-            <TableBody>
-  {phases.map((phase, index) => (
-    <TableRow key={index}>
-      <TableCell>
-        <TextField
-          fullWidth
-          value={phase.phaseNo}
-          onChange={(e) =>
-            setPhases(
-              phases.map((p, i) =>
-                i === index ? { ...p, phaseNo: e.target.value } : p
-              )
-            )
-          }
-        />
-      </TableCell>
-      <TableCell>
-        <TextField
-          fullWidth
-          value={phase.wingNo}
-          onChange={(e) =>
-            setPhases(
-              phases.map((p, i) =>
-                i === index ? { ...p, wingNo: e.target.value } : p
-              )
-            )
-          }
-        />
-      </TableCell>
-      <TableCell>
-        <TextField
-          fullWidth
-          value={phase.mahareraNo}
-          onChange={(e) =>
-            setPhases(
-              phases.map((p, i) =>
-                i === index ? { ...p, mahareraNo: e.target.value } : p
-              )
-            )
-          }
-        />
-      </TableCell>
-      <TableCell>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => handleRemovePhase(index)}
-        >
-          <FaTrash />
-        </Button>
-      </TableCell>
-    </TableRow>
-  ))}
-</TableBody>
-
-          </Table>
-        </TableContainer>
-
-     
-      </div>
-    )}
-  </div>
-)} */}
 
 
 {expandedSection === 1 && selectedTab === "display" && (
@@ -386,9 +320,7 @@ const handleTabClick = (index) => {
    
     {!showProjectForm ? (
        <>
-      {/* <Button variant="contained" color="primary" onClick={() => setShowProjectForm(true)}>
-        + Create Project
-      </Button> */}
+      
 <div className='button-container'>
 <Button variant="contained" color="primary" onClick={() => {
    console.log("Before:", showProjectForm);
@@ -398,7 +330,7 @@ const handleTabClick = (index) => {
 + Create Project
 </Button>
 
- {/* Previous and Next buttons on the right */}
+
  <div className="right-buttons">
       <Button variant="contained" color="secondary" onClick={handlePrevious}>
         Previous
@@ -414,120 +346,140 @@ const handleTabClick = (index) => {
 </div>
    </>
     ) : (
-      <div className="project-form mt-4 p-3 border rounded" style={{ maxHeight: '500px', overflowY: 'auto' }}>
-        <h5>Project Details</h5>
-        <Grid container spacing={2}>
-          <Grid item xs={4}><TextField label="FIRM Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Project Address" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Old Survey Number" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="New Survey Number" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Village" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Taluka" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="District" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Sanction Authority" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="East" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="West" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="North" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="South" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Latitude" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Longitude" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Landmark" fullWidth /></Grid>
-        </Grid>
+     
 
-        <h5 className="mt-4">Phase Details</h5>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Phase No</TableCell>
-                <TableCell>Wing No</TableCell>
-                <TableCell>Maharera No</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <TextField fullWidth placeholder="Enter Phase No" value={newPhase.phaseNo} 
-                    onChange={(e) => setNewPhase({ ...newPhase, phaseNo: e.target.value })} 
-                  />
-                </TableCell>
-                <TableCell>
-                  <TextField fullWidth placeholder="Enter Wing No" value={newPhase.wingNo} 
-                    onChange={(e) => setNewPhase({ ...newPhase, wingNo: e.target.value })} 
-                  />
-                </TableCell>
-                <TableCell>
-                  <TextField fullWidth placeholder="Enter Maharera No" value={newPhase.mahareraNo} 
-                    onChange={(e) => setNewPhase({ ...newPhase, mahareraNo: e.target.value })} 
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button variant="contained" color="primary" onClick={handleRemovePhase}>
-                 Remove
-                  </Button>
-                </TableCell>
-              
-              </TableRow>
-              <Button variant='contained' className="m-3 " color='primary'onClick={handleRemovePhase}>Add Row</Button>
-              <Button variant='contained' className="m-3 " color='primary'onClick={handleRemovePhase}>Submit</Button>
-            </TableHead>
-            <TableBody>
-              {phases.map((phase, index) => (
-                <TableRow key={index}>
-                  <TableCell>
-                    <TextField
-                      fullWidth
-                      value={phase.phaseNo}
-                      onChange={(e) =>
-                        setPhases(
-                          phases.map((p, i) =>
-                            i === index ? { ...p, phaseNo: e.target.value } : p
-                          )
-                        )
-                      }
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <TextField
-                      fullWidth
-                      value={phase.wingNo}
-                      onChange={(e) =>
-                        setPhases(
-                          phases.map((p, i) =>
-                            i === index ? { ...p, wingNo: e.target.value } : p
-                          )
-                        )
-                      }
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <TextField
-                      fullWidth
-                      value={phase.mahareraNo}
-                      onChange={(e) =>
-                        setPhases(
-                          phases.map((p, i) =>
-                            i === index ? { ...p, mahareraNo: e.target.value } : p
-                          )
-                        )
-                      }
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => handleRemovePhase(index)}
-                    >
-                      <FaTrash />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+
+      <div
+  className="project-form mt-4 p-3"
+  style={{
+    maxHeight: "500px", 
+    overflowY: "auto",
+    paddingRight: "10px",
+  }}
+>
+  <Paper className="p-4" elevation={4} style={{ borderRadius: "12px", paddingBottom: "20px" }}>
+    <Typography variant="h5" gutterBottom>
+      Project Details
+    </Typography>
+
+    <Grid container spacing={2}>
+      {[
+        "FIRM Name",
+        "Project Name",
+        "Project Address",
+        "Old Survey Number",
+        "New Survey Number",
+        "Village",
+        "Taluka",
+        "District",
+        "Sanction Authority",
+        "East",
+        "West",
+        "North",
+        "South",
+        "Latitude",
+        "Longitude",
+        "Landmark",
+      ].map((label, index) => (
+        <Grid item xs={4} key={index}>
+          <TextField label={label} fullWidth variant="outlined" />
+        </Grid>
+      ))}
+    </Grid>
+
+    <Typography variant="h5" className="mt-4" gutterBottom>
+      Phase Details
+    </Typography>
+
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Phase No</TableCell>
+            <TableCell>Wing No</TableCell>
+            <TableCell>Maharera No</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {phases.map((phase, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <TextField
+                  fullWidth
+                  value={phase.phaseNo}
+                  onChange={(e) =>
+                    setPhases(
+                      phases.map((p, i) =>
+                        i === index ? { ...p, phaseNo: e.target.value } : p
+                      )
+                    )
+                  }
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  fullWidth
+                  value={phase.wingNo}
+                  onChange={(e) =>
+                    setPhases(
+                      phases.map((p, i) =>
+                        i === index ? { ...p, wingNo: e.target.value } : p
+                      )
+                    )
+                  }
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  fullWidth
+                  value={phase.mahareraNo}
+                  onChange={(e) =>
+                    setPhases(
+                      phases.map((p, i) =>
+                        i === index ? { ...p, mahareraNo: e.target.value } : p
+                      )
+                    )
+                  }
+                />
+              </TableCell>
+              <TableCell>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => handleRemovePhase(index)}
+                >
+                  <FaTrash />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+    <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
+      <Button className="m-2" variant="contained" color="primary" onClick={handleAddPhase}>
+        <FaPlus /> Add Row
+      </Button>
+
+   
+ <Button
+  variant="contained"
+  className="mt-3"
+  color="success"
+  onClick={() => {
+    setShowFirmForm(false);
+    toast.success("details are submitted!", { position: "top-right", autoClose: 3000 });
+  }}
+>
+  Submit
+</Button>
+  
+    </div>
+  </Paper>
+</div>
+
     )}
   </div>
 )} 
@@ -540,54 +492,6 @@ const handleTabClick = (index) => {
 
 
 
-      {/* Add further sections here */}
-      {/* {expandedSection === 2 && (
-  <div className="content-container mt-3">
-    {!showLandownerForm ? (
-     <Button variant="contained" color="primary" onClick={() => setShowLandownerForm(true)}>
-     + Display LandOwner Info
-   </Button>
-   
-    ) : (
-      <div className="landowner-form mt-4 p-3 border rounded">
-        <h5>Landowner Details</h5>
-        <Grid container spacing={2}>
-          <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Mobile No." fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Landowner Name" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Age" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Occupation" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Mail ID" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Village" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="District" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Taluka" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Name of Bank" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Bank Address" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Account No." fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Aadhaar No." fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Residential Address" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="PAN No." fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Light Bill" fullWidth /></Grid>
-          <Grid item xs={4}>
-            <TextField type="file" accept="image/*" />
-          </Grid>
-        </Grid>
-
-        <h5 className="mt-4">Bank Details</h5>
-        <Grid container spacing={2}>
-          <Grid item xs={4}><TextField label="Select a Bank" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Bank Address" fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="Account No." fullWidth /></Grid>
-          <Grid item xs={4}><TextField label="IFSC Code" fullWidth /></Grid>
-        </Grid>
-
-        <Button className="m-3" variant="contained" color="success">
-          Submit Landowner Info
-        </Button>
-      </div>
-    )}
-  </div>
-)} */}
 
 {expandedSection === 2 && selectedTab === "landowner" && (
   <div className="content-container mt-3">
@@ -598,7 +502,7 @@ const handleTabClick = (index) => {
       <Button variant="contained" color="primary" onClick={() => setShowLandownerForm(true)}>
         + Display LandOwner Info
       </Button>
-  {/* Previous and Next buttons on the right */}
+  
   <div className="right-buttons">
       <Button variant="contained" color="secondary" onClick={handlePrevious}>
         Previous
@@ -616,7 +520,13 @@ const handleTabClick = (index) => {
     ) : (
       <div
         className="landowner-form mt-4 p-3 border rounded"
-        style={{ maxHeight: "500px", overflowY: "auto" }} // Added styles for vertical scrollbar
+       
+        style={{
+          maxHeight: "500px",
+          overflowY: "auto",
+          backgroundColor: "#f8f9fa", 
+          border: "1px solid #ccc", 
+        }}
       >
         <h5>Landowner Details</h5>
         <Grid container spacing={2}>
@@ -649,91 +559,38 @@ const handleTabClick = (index) => {
           <Grid item xs={4}><TextField label="IFSC Code" fullWidth /></Grid>
         </Grid>
 
-        <Button className="m-3" variant="contained" color="success">
-          Submit Landowner Info
-        </Button>
+       
+        
+<Button
+  variant="contained"
+  className="mt-3"
+  color="success"
+  onClick={() => {
+    setShowFirmForm(false);
+    toast.success("details are submitted!", { position: "top-right", autoClose: 3000 });
+  }}
+>
+Submit Landowner Info
+</Button>
       </div>
     )}
   </div>
 )}
-{/* 
-{expandedSection === 3 && selectedTab === "allotement" && (
-    <div className="content-container mt-3">
-     
-      {! showFlatForm? (
-         <>
-      
-        <Button variant="contained" color="primary" onClick={() => setShowFlatForm(true)}>
-  + Flat Allotement Info
-</Button>
 
-<div className='mt-3'>
-<FlatAllotment data={Flatdata} />
-</div>
-
-</>
-      ) : (
-        <div className="landowner-form mt-4 p-3 border rounded">
-          <h5>Flat Allotement Display </h5>
-          <Grid container spacing={2}>
-            <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
-            <Grid item xs={4}><TextField label="Name" fullWidth /></Grid>
-            <Grid item xs={4}><TextField label="Mobile No." fullWidth /></Grid>
-            <Grid item xs={4}><TextField label="No. of Flats Alloted" fullWidth /></Grid>
-      
-            </Grid>
-          <h4 className='pt-3'>Flat Details</h4>
-          <TableContainer component={Paper}>
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell>RERA CARPET AREA (SQ FT)</TableCell>
-        <TableCell>WING</TableCell>
-        <TableCell>FLAT NO.</TableCell>
-        <TableCell>TYPE OF FLAT</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-     
-    </TableBody>
-  </Table>
-</TableContainer>
-
-          
-  
-          
-  
-          <Button className="m-3" variant="contained" color="success">
-            Submit Landowner Info
-          </Button>
-        </div>
-      )}
-    </div>
-  )} */}
 
 {expandedSection === 3 && selectedTab === "allotement" && (
   <div className="content-container mt-3">
     {!showFlatForm ? (
       <>
-        {/* <Button variant="contained" color="primary" onClick={() => setShowFlatForm(true)}>
-          + Flat Allotement Info
-        </Button>
-  
-         
-         <Button variant="contained" color="secondary" onClick={handlePrevious}>
-          Previous
-        </Button>
-        <Button variant="contained" color="secondary" onClick={handleNext}>
-          Next */}
-        {/* </Button>    */}
+      
         
         <div className="button-container">
-    {/* Flat Allotment Info button on the left */}
+ 
     <Button variant="contained" color="primary" onClick={() => setShowFlatForm(true)}>
       + Flat Allotment Info
     </Button>
 
-    {/* Previous and Next buttons on the right */}
+
     <div className="right-buttons">
       <Button variant="contained" color="secondary" onClick={handlePrevious}>
         Previous
@@ -750,7 +607,10 @@ const handleTabClick = (index) => {
         </div>
       </>
     ) : (
-      <div className="landowner-form mt-4 p-3 border rounded">
+      <div className="landowner-form mt-4 p-3 border rounded" style={{
+        backgroundColor: "#f8f9fa", 
+        border: "1px solid #ccc", 
+      }}>
         <h5>Flat Allotement Display </h5>
         <Grid container spacing={2}>
           <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
@@ -771,18 +631,28 @@ const handleTabClick = (index) => {
             </TableHead>
             <TableBody>
             <TableRow>
-        <TableCell></TableCell> 
-        <TableCell></TableCell> 
-        <TableCell></TableCell> 
-        <TableCell></TableCell> 
+            <TableCell><TextField fullWidth variant="outlined" /></TableCell>
+        <TableCell><TextField fullWidth variant="outlined" /></TableCell>
+        <TableCell><TextField fullWidth variant="outlined" /></TableCell>
+        <TableCell><TextField fullWidth variant="outlined" /></TableCell>
       </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
 
-        <Button className="m-3" variant="contained" color="success">
-          Submit Flat Allotement Info
-        </Button>
+       
+
+<Button
+  variant="contained"
+  className="mt-3"
+  color="success"
+  onClick={() => {
+    setShowFirmForm(false);
+    toast.success("details are submitted!", { position: "top-right", autoClose: 3000 });
+  }}
+>
+Submit Flat Allotement Info
+</Button>
       </div>
     )}
   </div>

@@ -271,13 +271,12 @@ const HomeLoan = () => {
         </div>
       </div>
 
-      {/* Table Section */}
       <TableContainer component={Paper}  sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
         <Table style={{ tableLayout: 'auto', width: '100%' }}>
           <TableHead>
-            {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+            
                   <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
-              {/* Table Headers */}
+            
               <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Flat No.</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap"  }}>Name Of Allotee</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>Name Of Co-Allotee</TableCell>

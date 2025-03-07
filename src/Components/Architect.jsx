@@ -61,7 +61,11 @@ const [isCollapsed, setIsCollapsed] = useState(false);
     setIsCollapsed((prev) => !prev);
   };
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form submitted!");
+  };
+  
 
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= Math.ceil(filteredLoans.length / rowsPerPage)) {
@@ -98,6 +102,8 @@ const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div className="main-content">
+       {!openModal ? (
+        <>
       <h6>Letter Module / Engineer & Architect Letters</h6>
 
 {/* CRM Display Button */}
@@ -114,7 +120,8 @@ const [isCollapsed, setIsCollapsed] = useState(false);
         </Button>
       </div>
 
-
+      {/* {isCollapsed && (
+        <> */}
       <div className="d-flex align-items-center justify-content-between my-3 pt-4 pb-3">
         <Button variant="contained" className="text-nowrap" style={{ minWidth: "180px" }} color="primary" onClick={() => handleOpenModal(null)}>
           Add Letter
@@ -208,7 +215,6 @@ const [isCollapsed, setIsCollapsed] = useState(false);
           Previous
         </button>
 
-        {/* <span>Page {currentPage} of {Math.ceil(filteredLoans.length / rowsPerPage)}</span> */}
 
         <button
           className="btn btn-secondary"
@@ -220,107 +226,192 @@ const [isCollapsed, setIsCollapsed] = useState(false);
         </button>
       </div>
 
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        <Box
-          sx={{
-            width: 400,
-            margin: 'auto',
-            padding: 4,
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <div className="modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h5 id="modal-title" style={{ margin: 0 }}>Add Letter</h5>
-            <Button onClick={handleCloseModal} style={{ padding: '6px', fontSize: '16px' }}>X</Button>
-          </div>
 
-          <div className="modal-body" style={{ marginTop: '16px' }}>
-            {/* Select Slab */}
-            <div className="row mb-3">
-              <div className="col-md-12">
-                <TextField
-                  select
-                  label="Select Slab"
-                  fullWidth
-                  variant="outlined"
-                  style={{ marginBottom: '16px' }}
-                >
-                  <option value="OCR">OCR</option>
-                  <option value="GST">GST</option>
-                  <option value="Stamp Duty">Stamp Duty</option>
-                  <option value="Registration">Registration</option>
-                  <option value="Booking">Booking</option>
-                  <option value="Plinth Amount Received">Plinth Amount Received</option>
-                  <option value="1st Slab Level">1st Slab Level</option>
-                  <option value="2nd Slab Level">2nd Slab Level</option>
-                  <option value="3rd Slab Level">3rd Slab Level</option>
-                  <option value="5th Slab Level">5th Slab Level</option>
-                  <option value="7th Slab Level">7th Slab Level</option>
-                  <option value="10th Slab Level">10th Slab Level</option>
-                  <option value="Brick Level">Brick Level</option>
-                  <option value="External Plaster Level">External Plaster Level</option>
-                  <option value="Flooring Level">Flooring Level</option>
-                  <option value="Staircase Level">Staircase Level</option>
-                  <option value="Lift Level">Lift Level</option>
-                  <option value="Possession Level">Possession Level</option>
-                </TextField>
-              </div>
-            </div>
 
-            {/* Letter Type */}
-            <div className="row mb-3">
-              <div className="col-md-12">
-                <TextField
-                  select
-                  label="Letter Type"
-                  fullWidth
-                  variant="outlined"
-                  style={{ marginBottom: '16px' }}
-                >
-                  <option value="Engineer">Engineer</option>
-                  <option value="Architect">Architect</option>
-                </TextField>
-              </div>
-            </div>
+</>
+) : (
 
-            {/* Upload Document */}
-            <div className="row mb-3">
-              <div className="col-md-12">
-                <TextField
-                  type="file"
-                  fullWidth
-                  variant="outlined"
-                  onChange={handleFileChange}
-                  style={{ marginBottom: '16px' }}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="modal-footer" style={{ textAlign: 'right' }}>
-            <Button
-              variant="outlined"
-              color="secondary"
-              onClick={handleCloseModal}
-              style={{ marginRight: '8px' }}
-            >
-              Submit
-            </Button>
-          </div>
-        </Box>
-      </Modal>
+   
     
+    
+
+
+<Modal
+  open={openModal}
+  onClose={handleCloseModal}
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+>
+  <Box
+    sx={{
+      width: 500,
+      margin: 'auto',
+      padding: 3,
+      backgroundColor: 'white',
+      borderRadius: '12px',
+      boxShadow: '0 6px 18px rgba(0,0,0,0.3)',
+      border: '1px solid #ddd',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    }}
+  >
+    {/* Modal Header */}
+    <div
+      className="modal-header"
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingBottom: '12px',
+        borderBottom: '1px solid #ddd',
+        backgroundColor: '#f9f9f9',
+        padding: '10px',
+        borderRadius: '10px 10px 0 0'
+      }}
+    >
+      
+      {/* <h5
+  id="modal-title"
+  style={{ margin: 0, fontWeight: 600 }}
+  sx={{ backgroundColor: 'primary.main', padding: '10px', color: 'white' }}
+>
+  Add Letter
+</h5> */}
+{/* <h5
+  id="modal-title"
+  style={{
+    margin: 0,
+    fontWeight: 600,
+    backgroundColor: '#1976d2', // primary color (or your custom primary color)
+    padding: '10px',
+    color: 'white',
+  }}
+>
+  Add Letter
+</h5> */}
+
+{/* <h5
+  id="modal-title"
+  style={{
+    margin: 0,
+    fontWeight: 600,
+    backgroundColor: '#1976d2', // primary color (or your custom primary color)
+    padding: '10px',
+    color: 'white',
+    display: 'block', // Ensures it takes the full width
+    width: '100%' // Optional if needed for full width
+  }}
+>
+  Add Letter
+</h5>
+
+
+      <Button onClick={handleCloseModal} style={{ padding: '6px', fontSize: '16px', fontWeight: 'bold' }}>
+        X
+      </Button>
+    </div> */}
+
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#1976d2', // primary color (or your custom primary color)
+    padding: '10px',
+    width: '100%', // Ensures the background spans the whole line
+  }}
+>
+  <h5
+    id="modal-title"
+    style={{
+      margin: 0,
+      fontWeight: 600,
+      color: 'white',
+    }}
+  >
+    Add Letter
+  </h5>
+
+  <Button
+    onClick={handleCloseModal}
+    style={{
+      padding: '6px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+      color: 'white', // Close button text color
+    }}
+  >
+    X
+  </Button>
+</div>
+</div>
+
+    {/* Modal Body */}
+    <div className="modal-body" style={{ marginTop: '16px', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+      
+      {/* Section: Select Slab */}
+      <h6 style={{ marginBottom: '8px', fontWeight: 600 }}>Select Slab</h6>
+      <TextField
+        select
+        label="Select Slab"
+        fullWidth
+        variant="outlined"
+        sx={{ mb: 3, backgroundColor: 'white', borderRadius: '6px' }}
+      >
+        {[
+          'OCR', 'GST', 'Stamp Duty', 'Registration', 'Booking', 'Plinth Amount Received',
+          '1st Slab Level', '2nd Slab Level', '3rd Slab Level', '5th Slab Level',
+          '7th Slab Level', '10th Slab Level', 'Brick Level', 'External Plaster Level',
+          'Flooring Level', 'Staircase Level', 'Lift Level', 'Possession Level'
+        ].map((option) => (
+          <MenuItem key={option} value={option}>{option}</MenuItem>
+        ))}
+      </TextField>
+
+      {/* Section: Letter Type */}
+      <h6 style={{ marginBottom: '8px', fontWeight: 600 }}>Letter Type</h6>
+      <TextField
+        select
+        label="Letter Type"
+        fullWidth
+        variant="outlined"
+        sx={{ mb: 3, backgroundColor: 'white', borderRadius: '6px' }}
+      >
+        {['Engineer', 'Architect'].map((option) => (
+          <MenuItem key={option} value={option}>{option}</MenuItem>
+        ))}
+      </TextField>
+
+      {/* Section: Upload Document */}
+      <h6 style={{ marginBottom: '8px', fontWeight: 600 }}>Upload Document</h6>
+      <TextField
+        type="file"
+        fullWidth
+        variant="outlined"
+        onChange={handleFileChange}
+        sx={{ mb: 3, backgroundColor: 'white', borderRadius: '6px' }}
+      />
     </div>
+
+    {/* Modal Footer */}
+    <div className="modal-footer" style={{ textAlign: 'right', borderTop: '1px solid #ddd', paddingTop: '10px', backgroundColor: '#f9f9f9', padding: '10px', borderRadius: '0 0 10px 10px' }}>
+      <Button variant="outlined" color="secondary" onClick={handleCloseModal} sx={{ mr: 1 }}>
+        Cancel
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleSubmit}>
+        Submit
+      </Button>
+    </div>
+  </Box>
+</Modal>
+
+      )
+    }
+
+    </div>
+      
   );
 };
 

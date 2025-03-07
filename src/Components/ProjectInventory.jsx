@@ -1,178 +1,6 @@
 
 
-// import React, { useState, useEffect } from 'react';
-// import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TextField, Grid } from '@mui/material';
-// import { FaEye, FaBuilding, FaFileDownload, FaPlus, FaTrash } from "react-icons/fa";
-// import { FaFileCsv, FaUpload } from "react-icons/fa";
 
-// const fetchLoansData = async () => {
-//   const response = await fetch('/api/getOCRCollection');
-//   return response.json();
-// };
-
-// const sections = [
-//   { label: "Display Inventory", icon: <FaEye size={20} />, createLabel: "Display Inventory" },
-//   { label: "Sample CSV", icon: <FaFileCsv size={20}/>, createLabel: "Sample CSV" },
-//   { label: "Upload Excel", icon: <FaUpload size={20}/>, createLabel: "Upload Excel" },
-// ];
-
-// const ProjectInventory = () => {
-//   const [loans, setLoans] = useState([]);
-//   const [expandedSection, setExpandedSection] = useState(0);
-//   const [showFirmForm, setShowFirmForm] = useState(false);
-//   const [partners, setPartners] = useState([]);
-//   const [showProjectForm, setShowProjectForm] = useState(false);
-//   const [phases, setPhases] = useState([]);
-//   const [showLandownerForm, setShowLandownerForm] = useState(false); 
-//   const [showFlatForm, setShowFlatForm] = useState(false); 
-//   const [currentPage, setCurrentPage] = useState(1);
-
-//   useEffect(() => {
-//     loadLoansData();
-//   }, []);
-
-//   const loadLoansData = async () => {
-//     const data = await fetchLoansData();
-//     setLoans(data);
-//   };
-
-//   const handleToggleSection = (index) => {
-//     if (sections[index].label === "Download PDF") {
-//       handleDownloadPDF();
-//       return;
-//     }
-//     setExpandedSection(index);  
-//     setShowFirmForm(false);
-//     setShowProjectForm(false); 
-//     setShowLandownerForm(false); 
-//   };
-
-//   const handlePrevious = () => {
-//     if (currentPage > 1) {
-//       setCurrentPage(prevPage => prevPage - 1);
-//     }
-//   };
-
-//   const handleNext = () => {
-//     setCurrentPage(prevPage => prevPage + 1);
-//   };
-
-//   return (
-//     <div className="main-content">
-//       <h6>Dashboard / Developer Module / Project Inventory</h6>
-//       <div className="d-flex align-items-center mb-3">
-//         {sections.map((section, index) => (
-//           <Button
-//             key={index}
-//             onClick={() => handleToggleSection(index)}
-//             variant="outlined"
-//             color="primary"
-//             className="m-3"
-//             sx={{
-//               borderRadius: '20px',
-//               display: 'flex',
-//               alignItems: 'center',
-//               '&:hover': {
-//                 backgroundColor: '#9b4dca',
-//                 color: '#fff',
-//               },
-//               borderColor: '#9b4dca',
-//               color: '#9b4dca',
-//             }}
-//             startIcon={expandedSection === index ? section.icon : <FaEye size={20} color="#9b4dca" />}
-//           >
-//             {expandedSection === index ? section.label : null} 
-//           </Button>
-//         ))}
-//       </div>
-
-//       {expandedSection === 0 && (
-//         <div className="content-container mt-3">
-//           {!showFirmForm ? (
-//             <>
-//               <div className='button-container'>
-//                 <Button variant="contained" color="primary" onClick={() => setShowFirmForm(true)}>
-//                   + Create Firm
-//                 </Button>
-
-//                 {/* Previous and Next buttons on the right */}
-//                 <div className="right-buttons">
-//                   <Button variant="contained" color="secondary" onClick={handlePrevious}>
-//                     Previous
-//                   </Button>
-//                   <Button variant="contained" color="secondary" onClick={handleNext}>
-//                     Next
-//                   </Button>
-//                 </div>
-//               </div>
-
-//               <div className="mt-3">
-             
-//               </div>
-//             </>
-//           ) : (
-//             <div className="firm-form mt-4 p-3 border rounded">
-//               <h5></h5>
-//               <Grid container spacing={2}>
-//                 <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
-//                 <Grid item xs={4}><TextField label="Wing" fullWidth /></Grid>
-//                 <Grid item xs={4}><TextField label="Floor" fullWidth /></Grid>
-//                 <Grid item xs={4}><TextField label="Flat No." fullWidth /></Grid>
-//                 <Grid item xs={4}><TextField label="RERA Carpet Area (Sq Mtr)" fullWidth /></Grid>
-//                 <Grid item xs={4}><TextField label="RERA Carpet Area (Sq Ft)" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Total Saleable Area (Sq. Fts)" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Saleable to Carpet Area Ratio (Sq. Fts)" fullWidth /></Grid>
-
-//                      <Grid item xs={4}><TextField label="Type of Units" fullWidth /></Grid>
-
-//                      <Grid item xs={4}><TextField label="Configuration" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Status" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Select Owner" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="ATT. Terrace Carpet Area (Sq Ft)" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Balcony Area/Sitout Carpet Area (Sq Ft) "fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Porch Area (Sq Ft)" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="Top Terrace Carpet Area (Sq Ft)" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="BSuper Built-up Area (Sq Ft)"fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="
-// OPEN/ENCLOSED BALCONY AS SANCTIONED" fullWidth /></Grid>
-//                      <Grid item xs={4}><TextField label="PODIUM GARDE"fullWidth /></Grid>
-//               </Grid>
-
-//               <h5 className="mt-4">Partner Details</h5>
-//               {partners.map((partner, index) => (
-//                 <Grid container spacing={2} key={index}>
-//                   <Grid item xs={4}><TextField label="Name" fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Age" fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Occupation" fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Mobile No." fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Mail ID" fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Residential Address" fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="PAN No." fullWidth /></Grid>
-//                   <Grid item xs={4}><TextField label="Aadhaar No." fullWidth /></Grid>
-//                   <Grid item xs={4}>
-//                     <Button variant="contained" color="secondary" onClick={() => setPartners(partners.filter((_, i) => i !== index))}>
-//                       <FaTrash />
-//                     </Button>
-//                   </Grid>
-//                 </Grid>
-//               ))}
-
-//               <Button className="m-3" variant="contained" color="primary" onClick={() => setPartners([...partners, {}])}>
-//                 <FaPlus />  Add Partner
-//               </Button>
-
-//               <Button className="m-3" variant="contained" color="success" onClick={() => setShowFirmForm(false)}>
-//                 Save Firm
-//               </Button>
-//             </div>
-//           )}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ProjectInventory;
 
 
 
@@ -182,6 +10,11 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { FaEye, FaFileCsv, FaUpload, FaPlus, FaTrash } from "react-icons/fa";
 import { Inventory } from '@mui/icons-material';
 import InventoryTable from './InventoryTable';
+// import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+
+
+
 // API Call Function
 const fetchLoansData = async () => {
   const response = await fetch('/api/getOCRCollection');
@@ -223,24 +56,6 @@ const ProjectInventory = () => {
   };
 
   
-  // const handleToggleSection = (index) => {
-  //   setExpandedSection(index);  
-  //   setShowFirmForm(false);
-  // };
-
-  // const handleToggleSection = (index) => {
-  //   if (index === 1) {
-  //     // Download Sample CSV
-  //     downloadSampleCsv();
-  //   } else if (index === 2) {
-  //     // Show file upload input
-  //     // setShowFileInput(true);
-  //     fileInputRef.current.click();
-  //   } else {
-  //     setExpandedSection(index);
-  //     setShowFileInput(false);
-  //   }
-  // };
 
   const handleToggleSection = (index) => {
     if (index === 1) {
@@ -286,32 +101,14 @@ const ProjectInventory = () => {
     document.body.removeChild(a);
   };
 
+ 
   return (
     <div className="main-content">
       <h6>Dashboard / Developer Module / Project Inventory</h6>
 
       {/* Sidebar Navigation */}
       <div className="d-flex align-items-center mb-3">
-        {/* {sections.map((section, index) => (
-          <Button
-            key={index}
-            onClick={() => handleToggleSection(index)}
-            variant="outlined"
-            color="primary"
-            className="m-3"
-            sx={{
-              borderRadius: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              '&:hover': { backgroundColor: '#9b4dca', color: '#fff' },
-              borderColor: '#9b4dca',
-              color: '#9b4dca',
-            }}
-            startIcon={expandedSection === index ? section.icon : <FaEye size={20} color="#9b4dca" />}
-          >
-            {expandedSection === index ? section.label : null} 
-          </Button>
-        ))} */}
+       
 
 
 <div className="d-flex align-items-center mb-3">
@@ -383,8 +180,15 @@ const ProjectInventory = () => {
            </div>
             </>
           ) : (
-            <div className="firm-form mt-4 p-3 border rounded">
-              {/* <h5></h5> */}
+            <div className="firm-form mt-4 p-3 border rounded" 
+            style={{
+              maxHeight: "500px",
+              overflowY: "auto",
+              backgroundColor: "#f8f9fa", 
+              border: "1px solid #ccc", 
+            }}
+            >
+              
               <Grid container spacing={2}>
                 <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>
                 <Grid item xs={4}><TextField label="Wing" fullWidth /></Grid>
@@ -474,9 +278,21 @@ const ProjectInventory = () => {
 
              
 
-              <Button variant="contained" className="mt-3" color="success" onClick={() => setShowFirmForm(false)}>
-                Submit
-              </Button>
+          
+
+<Button
+  variant="contained"
+  className="mt-3"
+  color="success"
+  onClick={() => {
+    setShowFirmForm(false);
+    toast.success("Firm details are submitted!", { position: "top-right", autoClose: 3000 });
+  }}
+>
+  Submit
+</Button>
+
+
             </div> 
 
 
@@ -509,7 +325,12 @@ const ProjectInventory = () => {
            </div>
             </>
           ) : (
-            <div className="firm-form mt-4 p-3 border rounded">
+            <div className="firm-form mt-4 p-3 border rounded" 
+            style={{
+              backgroundColor: "#f8f9fa", // Light background for contrast
+              border: "1px solid #ccc", // Light gray border for separation
+            }}
+            >
               {/* <h5></h5> */}
               <Grid container spacing={2}>
                 <Grid item xs={4}><TextField label="Project Name" fullWidth /></Grid>

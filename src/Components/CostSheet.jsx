@@ -1,112 +1,6 @@
 
 
-// import React, { useState } from "react";
-// import {
-//   Button,
-//   TableContainer,
-//   Paper,
-//   Table,
-//   TableHead,
-//   TableRow,
-//   TableCell,
-//   TableBody,
-// } from "@mui/material";
-// import { FaEye } from "react-icons/fa";
-
-// const CostSheet = () => {
-//   const [isExpanded, setIsExpanded] = useState(false);
-
-//   const handleToggle = () => setIsExpanded(!isExpanded);
-
- 
-//   const data = [
-//     {
-//         reraCarpetArea: "",  // Add RERA Carpet Area
-//         config: "   ",         // Add Config
-//       },
-//   ];
-
-//   return (
-//     <div className="cost-sheet">
-      
-//       <div className="d-flex align-items-center mb-3">
-//         <Button
-//           onClick={handleToggle}
-//           variant="outlined"
-//           color="success"
-//           className="m-3"
-//           style={{
-//             borderRadius: "20px",
-//             minWidth: isExpanded ? "auto" : "50px", 
-//             padding: isExpanded ? "6px 16px" : "6px", 
-//           }}
-//           startIcon={<FaEye size={20} color="#28a745" />}
-//         >
-//           {isExpanded && <span className="text-success">Cost Sheet</span>}
-//         </Button>
-//       </div>
-
-    
-
-//  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
- 
-//   <h3 style={{ margin: 0 }}>Cost Information</h3>
-
-
-//   <div>
-   
-
-// <Button variant="contained" sx={{ mr: 1, backgroundColor: "#6a0dad", color: "white", "&:hover": { backgroundColor: "#4b0082" } }}>
-//   Previous
-// </Button>
-
-// <Button variant="contained" sx={{ mr: 1, backgroundColor: "#6a0dad", color: "white", "&:hover": { backgroundColor: "#4b0082" } }}>
-//   Next
-// </Button>
-
-
-//     <span style={{ marginLeft: "10px" }}>Rows per Page:</span>
-//     <select style={{ marginLeft: "5px", padding: "5px", borderRadius: "5px" }}>
-//       <option>5</option>
-//       <option>10</option>
-//       <option>15</option>
-//       <option>20</option>
-//     </select>
-//   </div>
-// </div>
-// <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 3, borderRadius: 2 }}>
-//   <Table sx={{ tableLayout: "auto", width: "100%" }}>
-//     <TableHead>
-//       <TableRow sx={{ bgcolor: "primary.main" }}>
-//         {["RERA CARPET AREA (SQ FT)", "CONFIG (2 BHK, 3 BHK, 4 BHK)"].map((header, index) => (
-//           <TableCell key={index} sx={{ color: "white", fontWeight: "bold" }}>
-//             {header}
-//           </TableCell>
-//         ))}
-//       </TableRow>
-//     </TableHead>
-
-//     <TableBody>
-//       {data.map((row, index) => (
-//         <TableRow key={index}>
-//           <TableCell>{row.reraCarpetArea}</TableCell>
-//           <TableCell>{row.config}</TableCell>
-//         </TableRow>
-//       ))}
-//     </TableBody>
-//   </Table>
-// </TableContainer>
-
-
-// <h3 className="pt-5">Developer Entries</h3>
-//   <button className="bg-primary text-white ">Create Developer Info</button>
-//     </div>
-//   );
-// };
-
-// export default CostSheet;
-
-
+import { toast, ToastContainer } from "react-toastify";
 import React, { useState } from "react";
 import {
   Button,
@@ -138,22 +32,63 @@ const CostSheet = () => {
     <div className="cost-sheet">
       
       {showForm ? (
-        <div style={{ border: "1px solid #ccc", padding: "15px", borderRadius: "10px", marginBottom: "20px" }}>
-          <h3 className="text-center p-3">Developer Information Form</h3>
-          <TextField type="number" fullWidth label="Carpet Area Rate for At the time Of Visit    " variant="outlined" sx={{ mb: 2 }} />
-          <TextField type="number" fullWidth label="Carpet Area Rate for At the time Of Booking" variant="outlined" sx={{ mb: 2 }} />
-          <TextField type="number" fullWidth label="Stamp Duty" variant="outlined" sx={{ mb: 2 }} />
+      
 
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button onClick={handleCloseForm} variant="contained" color="error" sx={{ mr: 1 }}>
-              Cancel
-            </Button>
-            <Button variant="contained" color="primary">Save</Button>
-          </div>
-        </div>
+<div style={{ 
+  border: "1px solid #ccc", 
+  marginTop: "50px",
+  padding: "30px", 
+  borderRadius: "10px", 
+  margin: "auto",  
+  backgroundColor: "#f8f9fa",  
+  width: "350px",  
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",  
+}}>
+  <h3 className="text-center p-3">Developer Information Form</h3>
+  
+  <TextField 
+    type="number" 
+    fullWidth 
+    label="Carpet Area Rate for At the time Of Visit" 
+    variant="outlined" 
+    sx={{ mb: 2, width: "100%" }} 
+  />
+  <TextField 
+    type="number" 
+    fullWidth 
+    label="Carpet Area Rate for At the time Of Booking" 
+    variant="outlined" 
+    sx={{ mb: 2, width: "100%" }} 
+  />
+  <TextField 
+    type="number" 
+    fullWidth 
+    label="Stamp Duty" 
+    variant="outlined" 
+    sx={{ mb: 2, width: "100%" }} 
+  />
+
+  <div style={{ display: "flex", justifyContent: "space-between", width: "90%" }}>
+    <Button onClick={handleCloseForm} variant="contained" color="error">
+      Cancel
+    </Button>
+ 
+    <Button 
+    onClick={() => toast.success("Form details submitted successfully!", { position: "top-right", autoClose: 3000 })} 
+    variant="contained" 
+    color="primary"
+  >
+    Save
+  </Button>
+  </div>
+</div>
+
+
       ) : (
         <>
-          {/* Expand/Collapse Button */}
+       
           <div className="d-flex align-items-center mb-3">
             <Button
               onClick={handleToggle}
@@ -171,7 +106,7 @@ const CostSheet = () => {
             </Button>
           </div>
 
-          {/* Cost Information Header & Pagination */}
+     
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
             <h3 style={{ margin: 0 }}>Cost Information</h3>
 
@@ -227,7 +162,7 @@ const CostSheet = () => {
   <Button 
     onClick={handleShowForm} 
     variant="contained" 
-    // sx={{ backgroundColor: "blue", color: "white" }}
+   
     className="bg-primary"
   >
    +  Create Developer Info
@@ -249,7 +184,7 @@ const CostSheet = () => {
       Next
     </Button>
     
-    {/* Rows per Page Dropdown */}
+   
     <div style={{ marginLeft: '20px' }}>
         Rows Per Page:
       <select 
@@ -269,10 +204,10 @@ const CostSheet = () => {
 
 
 
-{/* Table Container */}
+
 <TableContainer component={Paper} style={{ marginTop: '20px' }}>
         <Table>
-          {/* Table Header */}
+        
           <TableHead>
             <TableRow sx={{ bgcolor: "primary.main" }}>
               <TableCell  sx={{ color: "white", fontWeight: "bold" }}>TIMESTAMP</TableCell>
@@ -282,7 +217,7 @@ const CostSheet = () => {
             </TableRow>
           </TableHead>
 
-          {/* Table Body */}
+      
           <TableBody>
             {data.map((row, index) => (
               <TableRow key={index}>

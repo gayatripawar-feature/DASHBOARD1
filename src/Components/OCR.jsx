@@ -194,76 +194,7 @@ const OCR = () => {
         </Button>
       </div>
 
-      {/* Filter, Reset, Rows per page in one line */}
-      {/* <div className="d-flex align-items-center justify-content-between mb-3">
-        <div className="d-flex align-items-center gap-3">
-          <label>Filter By:</label>
-          <TextField
-            select
-            variant="outlined"
-            size="small"
-            style={{ width: '150px' }}
-            value={filterType}
-            className="bg-white"
-            onChange={(e) => {
-              setFilterType(e.target.value);
-              setFilterValue('');
-            }}
-          >
-            <MenuItem value="">Select Filter</MenuItem>
-            <MenuItem value="Flat Type">Flat Type</MenuItem>
-            <MenuItem value="Parking">Parking</MenuItem>
-            <MenuItem value="Floor">Floor</MenuItem>
-            <MenuItem value="Rate">Rate</MenuItem>
-          </TextField>
-
-         
-          {filterType && (
-            <>
-              <label>{filterType}:</label>
-              <TextField
-                select
-                variant="outlined"
-                size="small"
-                className="bg-white"
-                style={{ width: '150px' }}
-                value={filterValue}
-                onChange={(e) => setFilterValue(e.target.value)}
-              >
-                {getFilterOptions(filterType).map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </TextField>
-
-        
-              <Button
-                variant="contained"
-                color="secondary"
-                style={{ marginLeft: '10px' }}
-                onClick={resetFilters}
-              >
-                Reset
-              </Button>
-            </>
-          )}
-        </div>
-
-        <div className="d-flex align-items-center gap-3">
-          <div className="d-flex align-items-center">
-            <label className="me-2">Rows per page:</label>
-            <input
-              type="number"
-              className="form-control"
-              value={rowsPerPage}
-              onChange={handleRowsPerPageChange}
-              style={{ width: '80px' }}
-            />
-          </div>
-        </div>
-      </div> */}
-
+     
 
          
          

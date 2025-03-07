@@ -21,15 +21,16 @@ import CostSheet from './Components/CostSheet';
 import Salesmis from './Components/Salesmis';
 import Marketing from './Components/Marketing';
 import { Calendar } from 'lucide-react';
-import SalesCalendar from "./Components/SalesCalendar";
+// import SalesCalendar from "./Components/SalesCalendar";
 import SalesDashboard from "./Components/SalesDashboard";
-import SalesSharespace from "./Components/SalesSharespace";
-
+// import SalesSharespace from "./Components/SalesSharespace";
+import { toast ,ToastContainer} from "react-toastify";
 const App = () => {
   return (
     <Router>
+      <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
-       
+      
         <Route path="/" element={<Dashboard />}>
         <Route path="admin/salesperson" element={<SalesModule />} />
         <Route path="admin/banker" element={<Banker />} />
@@ -42,8 +43,8 @@ const App = () => {
         
         <Route path="/sales/lostvisits"  element={<LostVisitsModule />} />
         <Route path ="/sales/salesdashboard" element={< SalesDashboard/>} />
-        <Route path ="/sales/salescalander" element={< SalesCalendar/>} />
-        <Route path ="/sales/sharespace" element={< SalesSharespace/>} />
+        {/* <Route path ="/sales/salescalander" element={< SalesCalendar/>} />
+        <Route path ="/sales/sharespace" element={< SalesSharespace/>} /> */}
          
         
            <Route path="crm/CRM" element={<CRM/>} /> 

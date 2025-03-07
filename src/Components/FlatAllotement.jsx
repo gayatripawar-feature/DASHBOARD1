@@ -7,7 +7,7 @@ const FlatAllotment = ({ data }) => {
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
-          {/* <TableRow sx={{ bgcolor: "primary.main" }}> */}
+          
           <TableRow sx={{ background: "linear-gradient(180deg, #3621a9 0%,rgb(139, 115, 243) 100%)" }}>
             <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>ACTION</TableCell>
             <TableCell sx={{ color: "white", fontWeight: "bold" ,whiteSpace: "nowrap" }}>TIMESTAMP</TableCell>
